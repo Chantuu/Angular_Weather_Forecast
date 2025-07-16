@@ -1,0 +1,4 @@
+/* Resizing Sidebar Container using Flexbox */
+:host {
+    flex: 1 0 473px;
+}
