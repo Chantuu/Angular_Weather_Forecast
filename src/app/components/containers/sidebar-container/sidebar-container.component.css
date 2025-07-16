@@ -1,4 +1,10 @@
 /* Resizing Sidebar Container using Flexbox */
 :host {
     flex: 1 0 473px;
+
+    /* This rule prevents container from unnecessary expansion */
+    box-sizing: border-box;
+
+    background-color: var(--outer-black-main);
+    padding: 35px 60px 72px 60px;
 }
