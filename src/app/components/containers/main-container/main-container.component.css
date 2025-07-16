@@ -1,0 +1,4 @@
+/* Resizing Main Container using flexbox */
+:host {
+    flex: 2 0 967px;
+}
