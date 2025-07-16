@@ -37,3 +37,12 @@ table {
 }
 
 /* Global Variables */
+:root {
+    --outer-black-main: #3E4345;
+
+    --picton-blue-main: #2AB5FA;
+
+    --columbia-blue-main: #C8D8E0;
+
+    --indigo-dye-main: #17465E;
+}
