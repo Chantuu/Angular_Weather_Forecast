@@ -1,0 +1,96 @@
+/* Styling Button HTML element */
+:host {
+    background: none;
+    border: none;
+}
+
+/* Styling Button Content */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Styling Button Icon */
+.icon {
+    width: 28px;
+    height: 28px;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+
+    /* For supporting legacy browsers */
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+}
+
+/* Styling Button Text */
+span {
+    font-size: 15px;
+    line-height: 150.6%;
+    font-weight: 500;
+}
+
+/* Dynamically Applied CSS Classes */
+
+/* When button tab is not active */
+
+/* Button Text Animation Styles */
+.buttonTabActiveFalseSpan {
+    color: var(--columbia-blue-main);
+    transition: color 0.2s ease-in-out;
+}
+
+:host:hover span.buttonTabActiveFalseSpan {
+    color: var(--columbia-blue-hover);
+}
+
+:host:active span.buttonTabActiveFalseSpan {
+    color: var(--columbia-blue-active);
+}
+
+/* Button Icon Animation Styles */
+.buttonTabActiveFalseIcon {
+    background-color: var(--columbia-blue-main);
+    transition: background-color 0.2s ease-in-out;
+}
+
+:host:hover div.buttonTabActiveFalseIcon {
+    background-color: var(--columbia-blue-hover);
+}
+
+:host:active div.buttonTabActiveFalseIcon {
+    background-color: var(--columbia-blue-active);
+}
+
+/* When button tab is active */
+
+/* Button Text Animation Styles */
+.buttonTabActiveTrueSpan {
+    color: var(--picton-blue-main);
+    transition: color 0.2s ease-in-out;
+}
+
+:host:hover span.buttonTabActiveTrueSpan {
+    color: var(--picton-blue-hover);
+}
+
+:host:active span.buttonTabActiveTrueSpan {
+    color: var(--picton-blue-active);
+}
+
+/* Button Icon Animation Styles */
+.buttonTabActiveTrueIcon {
+    background-color: var(--picton-blue-main);
+    transition: background-color 0.2s ease-in-out;
+}
+
+:host:hover div.buttonTabActiveTrueIcon {
+    background-color: var(--picton-blue-hover);
+}
+
+:host:active div.buttonTabActiveTrueIcon {
+    background-color: var(--picton-blue-active);
+}

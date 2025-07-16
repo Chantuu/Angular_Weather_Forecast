@@ -1,1 +1,18 @@
-<p>sidebar-button works!</p>
+<div [class]="{
+    'container': true
+}">
+    <div [class]="{
+        'icon': true,
+        'buttonTabActiveFalseIcon': buttonTabActive() === false,
+        'buttonTabActiveTrueIcon': buttonTabActive() === true,
+    }"
+
+         [ngStyle]="{
+    'mask-image': getMaskImage(),
+    '-webkit-mask-image': getMaskImage()
+    }"></div>
+    <span [class]="{
+        'buttonTabActiveFalseSpan': buttonTabActive() === false,
+        'buttonTabActiveTrueSpan': buttonTabActive() === true,
+    }"><ng-content /></span>
+</div>
