@@ -8,3 +8,12 @@
     background-color: var(--outer-black-main);
     padding: 35px 60px 72px 60px;
 }
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 100%;
+}
