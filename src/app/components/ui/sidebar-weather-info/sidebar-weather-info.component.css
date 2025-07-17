@@ -1,0 +1,28 @@
+/* Take Full Width in Parent FlexBox Container  */
+:host {
+    align-self: stretch;
+}
+
+/* Styling Container */
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Styling Icon */
+img {
+    width: 37px;
+    height: 30px;
+}
+
+/* Styling Text */
+span {
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 163.2%;
+
+    color: var(--columbia-blue-main);
+}
+
