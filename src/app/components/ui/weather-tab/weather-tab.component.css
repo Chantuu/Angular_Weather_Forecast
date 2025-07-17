@@ -1,0 +1,78 @@
+/* Host Element Takes All Available Space in Parent Flex Container */
+:host {
+    flex: 1;
+}
+
+/* Styling Container */
+.container {
+    /* Container Takes All Available Space From Host Element */
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Styling Weather Icon */
+.weatherIcon {
+    margin-top: 12%;
+
+    width: 65%;
+    height: 30%;
+    min-height: 160px;
+    min-width: 250px;
+    max-height: 230px;
+    max-width: 260px;
+
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    mask-image: url('/assets/button_Icons/cloud.svg');
+    background-color: var(--picton-blue-main);
+
+    /* For supporting legacy browsers */
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+}
+
+/* Styling Temperature Text */
+.sidebarTemperature {
+    margin-top: 16%;
+
+    font-family: "Geist", sans-serif;
+    font-size: 64px;
+    font-weight: 800;
+
+    color: var(--columbia-blue-main);
+    align-self: flex-start;
+}
+
+/* Styling Date Text */
+.sidebarDate {
+    font-family: "Geist", sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+
+    color: var(--columbia-blue-main);
+    align-self: flex-start;
+}
+
+/* Giving Time Text Different Color */
+.sidebarTime {
+    color: #9F9F9F;
+}
+
+/* Styling Horizontal Ruler */
+hr {
+    align-self: stretch;
+    border: 1.5px solid var(--columbia-blue-main);
+
+    margin: 7% 0;
+}
+
+/* Class Giving Any Element Bottom Margin */
+.marginBottom {
+    margin-bottom: 17px;
+}

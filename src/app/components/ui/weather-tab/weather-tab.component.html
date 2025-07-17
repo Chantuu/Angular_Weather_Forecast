@@ -1,1 +1,14 @@
-<p>weather-tab works!</p>
+<div class="container">
+    <app-city-search-bar />
+    <div class="weatherIcon"></div>
+    <span class="sidebarTemperature">14</span>
+    <span class="sidebarDate">Monday,&nbsp;&nbsp;<span class="sidebarTime">17:00</span></span>
+    <hr />
+    <app-sidebar-weather-info
+            class="marginBottom"
+            iconName="cloud_sidebar_info"
+            iconAltText="Cloud Icon">Mostly Cloudy</app-sidebar-weather-info>
+    <app-sidebar-weather-info
+            iconName="raindrop_sidebar_info"
+            iconAltText="Rain Drop Icon">Rain - 40%</app-sidebar-weather-info>
+</div>
