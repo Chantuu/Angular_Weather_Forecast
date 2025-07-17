@@ -1,4 +1,27 @@
 <div class="container">
-    <p>Test Content</p>
-    <app-sidebar-button-container />
+    @if (currentSidebarButtonPressed() === SidebarButtonType.Weather) {
+        <app-weather-tab />
+    } @else if (currentSidebarButtonPressed() === SidebarButtonType.Cities) {
+        <p>Cities Tab</p>
+    } @else {
+        <app-about-tab />
+    }
+
+    <div class="buttonContainer">
+        <button app-sidebar-button iconName="cloud"
+                [buttonTabActive]="currentSidebarButtonPressed() === SidebarButtonType.Weather"
+                [buttonType]="SidebarButtonType.Weather"
+                (onClick)="setActiveSidebarButton($event)"
+                >Weather</button>
+        <button app-sidebar-button iconName="checkmark"
+                [buttonTabActive]="currentSidebarButtonPressed() === SidebarButtonType.Cities"
+                [buttonType]="SidebarButtonType.Cities"
+                (onClick)="setActiveSidebarButton($event)"
+                >Cities</button>
+        <button app-sidebar-button iconName="about"
+                [buttonTabActive]="currentSidebarButtonPressed() === SidebarButtonType.About"
+                [buttonType]="SidebarButtonType.About"
+                (onClick)="setActiveSidebarButton($event)"
+                >About</button>
+    </div>
 </div>
