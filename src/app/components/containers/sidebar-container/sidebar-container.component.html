@@ -1,4 +1,9 @@
 <div class="container">
+    @if (currentSidebarButtonPressed() === SidebarButtonType.Weather ||
+    currentSidebarButtonPressed() === SidebarButtonType.Cities) {
+        <app-city-search-bar />
+    }
+
     @if (currentSidebarButtonPressed() === SidebarButtonType.Weather) {
         <app-weather-tab />
     } @else if (currentSidebarButtonPressed() === SidebarButtonType.Cities) {

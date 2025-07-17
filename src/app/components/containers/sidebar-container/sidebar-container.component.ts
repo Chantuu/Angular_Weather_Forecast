@@ -3,10 +3,11 @@ import {SidebarButtonComponent} from "../../ui/sidebar-button/sidebar-button.com
 import {SidebarButtonType} from "../../../utilities/enums/sidebar-button.enum";
 import {WeatherTabComponent} from "../../ui/weather-tab/weather-tab.component";
 import {AboutTabComponent} from "../../ui/about-tab/about-tab.component";
+import {CitySearchBarComponent} from "../../ui/city-search-bar/city-search-bar.component";
 
 @Component({
   selector: 'app-sidebar-container',
-  imports: [SidebarButtonComponent, WeatherTabComponent, AboutTabComponent],
+  imports: [SidebarButtonComponent, WeatherTabComponent, AboutTabComponent, CitySearchBarComponent],
   templateUrl: './sidebar-container.component.html',
   styleUrl: './sidebar-container.component.css'
 })
