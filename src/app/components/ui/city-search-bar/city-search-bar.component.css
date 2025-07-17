@@ -1,0 +1,57 @@
+/* Aligning Elements Inside form Element Horizontally */
+form {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Adding Space Between img Icon and Input Element */
+img {
+    margin-right: 7px;
+}
+
+/* Styling Text Input */
+#citySearchInput, #citySearchInput::placeholder {
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 163.2%;
+
+    color: var(--columbia-blue-main);
+}
+
+#citySearchInput {
+    flex: 1 0 auto;
+
+    background: none;
+    border: none;
+
+    padding: 2px 0 0 0;
+}
+
+#citySearchInput:focus-visible {
+    outline: none;
+}
+
+/* Styling Form Button */
+button {
+    margin-left: 10px;
+    padding: 7px 13px;
+
+    border: none;
+    border-radius: 5px;
+
+    font-size: 17px;
+    font-weight: 400;
+
+    background-color: var(--picton-blue-main);
+    color: var(--outer-black-main);
+
+    transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+    background-color: var(--picton-blue-hover);
+}
+
+button:active {
+    background-color: var(--picton-blue-active);
+}
