@@ -1,5 +1,10 @@
-<form>
+<form (ngSubmit)="onSubmitPerform()">
     <img src="/assets/search_Bar_Icons/search.svg" alt="Search Icon">
-    <input type="text" placeholder="Search for places..." id="citySearchInput"/>
+    <input type="text"
+           placeholder="Search for places..."
+           id="citySearchInput"
+           [(ngModel)]="inputText"
+           [ngModelOptions]="{ standalone: true }"
+    />
     <button type="submit">Search</button>
 </form>
