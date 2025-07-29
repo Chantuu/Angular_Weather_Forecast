@@ -1,13 +1,17 @@
 <div class="container">
-    <div class="weatherIcon"></div>
-    <span class="sidebarTemperature">14</span>
-    <span class="sidebarDate">Monday,&nbsp;&nbsp;<span class="sidebarTime">17:00</span></span>
+    <div class="weatherIcon"
+         [ngStyle]="{
+            'mask-image': getWeatherIconPath(this.weatherCode()),
+         }"
+    ></div>
+    <span class="sidebarTemperature">{{ this.weatherTemperature() }}&deg;C</span>
+    <span class="sidebarDate">{{ currentDate().toLocaleDateString('en-US', { weekday: 'long'}) }}</span>
     <hr />
     <app-sidebar-weather-info
             class="marginBottom"
-            iconName="cloud_sidebar_info"
-            iconAltText="Cloud Icon">Mostly Cloudy</app-sidebar-weather-info>
+            iconName="location_sidebar_info"
+            iconAltText="Location Icon">City - {{ this.currentCityName() }}</app-sidebar-weather-info>
     <app-sidebar-weather-info
             iconName="raindrop_sidebar_info"
-            iconAltText="Rain Drop Icon">Rain - 40%</app-sidebar-weather-info>
+            iconAltText="Rain Drop Icon">Rain - {{ this.weatherPrecipitationProbability() }}&percnt;</app-sidebar-weather-info>
 </div>

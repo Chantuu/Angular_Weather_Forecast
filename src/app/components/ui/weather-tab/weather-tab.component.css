@@ -27,14 +27,13 @@
 
     mask-repeat: no-repeat;
     mask-position: center;
-    mask-size: contain;
-    mask-image: url('/assets/button_Icons/cloud.svg');
+    mask-size: cover;
     background-color: var(--picton-blue-main);
 
     /* For supporting legacy browsers */
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-position: center;
-    -webkit-mask-size: contain;
+    -webkit-mask-size: cover;
 }
 
 /* Styling Temperature Text */
@@ -57,11 +56,6 @@
 
     color: var(--columbia-blue-main);
     align-self: flex-start;
-}
-
-/* Giving Time Text Different Color */
-.sidebarTime {
-    color: #9F9F9F;
 }
 
 /* Styling Horizontal Ruler */
