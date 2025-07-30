@@ -1,14 +1,30 @@
 <div class="container">
     @if (currentSidebarButtonPressed() === SidebarButtonType.Weather ||
     currentSidebarButtonPressed() === SidebarButtonType.Cities) {
-        <app-city-search-bar />
+        <app-city-search-bar (onSubmit)="onFormSubmit($event)"/>
     }
 
     @if (currentSidebarButtonPressed() === SidebarButtonType.Weather) {
-        <app-weather-tab />
+        <!-- WeatherData object was assigned a variable in here to reduce weatherData() signal calls and
+        give necessary data to WeatherTabComponent easily -->
+        @let weatherDataValue = weatherData();
+
+        <!-- If WeatherService successfully retrieved weather data from Open-Meteo API for corresponding city -->
+        @if (weatherDataValue) {
+            <app-weather-tab
+                    [weatherTemperature]="weatherDataValue.daily.temperatureMax[0]"
+                    [currentDate]="weatherDataValue.daily.date[0]"
+                    [currentCityName]="weatherDataValue.city"
+                    [weatherCode]="weatherDataValue.daily.weatherCode[0]"
+                    [weatherPrecipitationProbability]="weatherDataValue.daily.precipitationProbability"
+            />
+        }
+        @else {
+            <app-na />
+        }
     } @else if (currentSidebarButtonPressed() === SidebarButtonType.Cities) {
         <p>Cities Tab</p>
-    } @else {
+    } @else if (currentSidebarButtonPressed() === SidebarButtonType.About){
         <app-about-tab />
     }
 
