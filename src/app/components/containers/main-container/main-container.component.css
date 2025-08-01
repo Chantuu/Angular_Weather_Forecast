@@ -1,4 +1,14 @@
 /* Resizing Main Container using flexbox */
 :host {
     flex: 2 0 967px;
+
+    /* Align Items Correctly inside Container */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 35px 60px 72px;
+
+    /* Used to Avoid Unnecessary Growth of the Element and Overflow */
+    box-sizing: border-box;
 }
