@@ -1,1 +1,9 @@
-<p>weather-card works!</p>
+<div class="container">
+    <p>{{ weatherDateTime() }}</p>
+    <div class="weatherIcon"
+        [ngStyle]="{
+            'mask-image': getWeatherIconPath(weatherCode())
+        }"
+    ></div>
+    <p>{{ weatherTemperature() }}&deg;C</p>
+</div>

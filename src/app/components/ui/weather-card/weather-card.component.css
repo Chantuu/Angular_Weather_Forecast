@@ -1,0 +1,43 @@
+/* Styling container of the weather card content */
+.container {
+    /* Aligning content inside the container */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: var(--columbia-blue-main);
+
+    max-width: 156px;
+    max-height: 170px;
+
+    /* Setting border-box to avoid unnecessary container size growth */
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 14px 26px;
+}
+
+/* Styling weather icon */
+.weatherIcon {
+    height: 87px;
+    width: 87px;
+
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: cover;
+    background-color: var(--outer-black-main);
+
+    /* For supporting legacy browsers */
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: cover;
+}
+
+/* Styling text inside the weather card container */
+p {
+    font-family: 'Geist Mono', sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 163.2%;
+    color: var(--outer-black-main);
+}
