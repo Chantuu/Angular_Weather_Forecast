@@ -2,7 +2,7 @@ import {Component, input} from '@angular/core';
 import {SidebarWeatherInfoComponent} from "../sidebar-weather-info/sidebar-weather-info.component";
 import {
   getWeatherIconPath
-} from "../../../utilities/functions/sidebar_Weather_Icon_Functions/get-weather-icon-path.function";
+} from "../../../utilities/functions/get-weather-icon-path.function";
 import {NgStyle} from "@angular/common";
 
 @Component({

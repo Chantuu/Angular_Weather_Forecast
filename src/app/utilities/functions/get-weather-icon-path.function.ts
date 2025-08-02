@@ -105,5 +105,5 @@ export function getWeatherIconPath(weatherCode: number): string {
         }
     }
 
-    return `url(assets/sidebar_Main_Weather_Icons/${iconName}.svg)`;
+    return `url(assets/main_Weather_Icons/${iconName}.svg)`;
 }
