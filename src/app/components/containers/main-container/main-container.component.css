@@ -1,6 +1,9 @@
 /* Resizing Main Container using flexbox */
 :host {
-    flex: 2 0 967px;
+    flex: 2 1 967px;
+
+    /* This rule prevents overflow of the weather cards in main container */
+    min-width: 0;
 
     /* Align Items Correctly inside Container */
     display: flex;
