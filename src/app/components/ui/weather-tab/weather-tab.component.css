@@ -16,14 +16,10 @@
 
 /* Styling Weather Icon */
 .weatherIcon {
-    margin-top: 12%;
+    margin-top: 6%;
 
-    width: 65%;
-    height: 30%;
-    min-height: 160px;
-    min-width: 250px;
-    max-height: 230px;
-    max-width: 260px;
+    height: 242px;
+    width: 242px;
 
     mask-repeat: no-repeat;
     mask-position: center;
@@ -38,7 +34,7 @@
 
 /* Styling Temperature Text */
 .sidebarTemperature {
-    margin-top: 16%;
+    margin-top: 1%;
 
     font-family: "Geist", sans-serif;
     font-size: 64px;
