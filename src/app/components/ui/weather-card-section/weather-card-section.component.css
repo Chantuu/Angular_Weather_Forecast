@@ -1,0 +1,36 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+h2 {
+    font-family: 'Geist', sans-serif;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 47px;
+    letter-spacing: 2px;
+
+    flex: 0 1 414px;
+}
+
+.headerContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.contentScrollableContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+/*to hide the scrollbars*/
+::-webkit-scrollbar {
+    display: none;
+}

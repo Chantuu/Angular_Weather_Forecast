@@ -1,1 +1,32 @@
-<p>weather-card-section works!</p>
+<div class="headerContainer">
+    <h2>{{ sectionTitle() }}</h2>
+    <ng-content />
+</div>
+
+<!-- WeatherData object was assigned a variable in here to reduce sharedWeatherData() signal calls and
+        give necessary data to WeatherTabComponent easily -->
+@let sharedWeatherDataValue = sharedWeatherData();
+
+@if (sharedWeatherDataValue) {
+    <div class="contentScrollableContainer">
+        @if (weatherInfoType() === WeatherInfoType.Hourly) {
+            @for (currentHourWeatherData of sharedWeatherDataValue.hourly; track currentHourWeatherData.uuid) {
+                <app-weather-card [weatherTemperature]="currentHourWeatherData.temperature"
+                                  [weatherDateTime]="currentHourWeatherData.time"
+                                  [weatherCode]="currentHourWeatherData.weatherCode"
+                                  [weatherInfoType]="weatherInfoType()"
+                />
+            }
+        } 
+        @else if (weatherInfoType() === WeatherInfoType.Daily) {
+            @for (currentDayWeatherData of sharedWeatherDataValue.daily; track currentDayWeatherData.uuid) {
+                <app-weather-card [weatherTemperature]="currentDayWeatherData.temperatureMax"
+                                  [weatherDateTime]="currentDayWeatherData.date"
+                                  [weatherCode]="currentDayWeatherData.weatherCode"
+                                  [weatherInfoType]="weatherInfoType()"
+                />
+            }
+        }
+    </div>
+}
+
