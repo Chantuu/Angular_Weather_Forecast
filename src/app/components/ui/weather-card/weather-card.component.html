@@ -1,8 +1,14 @@
 <div class="container">
-    <p>{{ weatherDateTime() }}</p>
+    <p>
+        {{
+            weatherDateTime().toLocaleString('en-US',
+        this.weatherInfoType() === WeatherInfoType.Hourly ? { hour: 'numeric', minute: 'numeric', hour12: false } :
+            { weekday: 'long'})
+        }}
+    </p>
     <div class="weatherIcon"
         [ngStyle]="{
-            'mask-image': getWeatherIconPath(weatherCode())
+            'mask-image': getWeatherIconPath(weatherCode(), weatherDateTime())
         }"
     ></div>
     <p>{{ weatherTemperature() }}&deg;C</p>
