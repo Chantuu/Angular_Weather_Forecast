@@ -11,22 +11,24 @@ export type WeatherData = {
      * This property contains all information intended for representing whole day weather data.
      */
     daily: {
-        date: Date[],
-        weatherCode: number[],
-        temperatureMax: number[],
-        temperatureMin: number[],
+        uuid: string,
+        date: Date,
+        weatherCode: number,
+        temperatureMax: number,
+        temperatureMin: number,
         uvIndex: number,
         sunrise: Date,
         sunset: Date,
         precipitationProbability: number,
         windSpeed: number,
-    },
+    }[],
     /**
      * This property contains all information intended for representing hourly weather data for one day.
      */
     hourly: {
-        temperature: number[],
-        time: Date[],
-        weatherCode: number[],
-    }
+        uuid: string,
+        temperature: number,
+        time: Date,
+        weatherCode: number,
+    }[]
 };
