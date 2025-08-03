@@ -1,1 +1,21 @@
-<p>sunrise-sunset-card works!</p>
+<div class="container">
+    <p>Sunrise & Sunset</p>
+    <div class="dataContainer">
+        <div class="timeContainer">
+            <img src="assets/highlight_Card_Icons/sunrise.svg" alt="Sunrise Icon">
+            <span>
+                {{
+                    sunriseTime().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric' })
+                }}
+            </span>
+        </div>
+        <div class="timeContainer">
+            <img src="assets/highlight_Card_Icons/sunset.svg" alt="Sunset Icon">
+            <span>
+                {{
+                    sunsetTime().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric' })
+                }}
+            </span>
+        </div>
+    </div>
+</div>

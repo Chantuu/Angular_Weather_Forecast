@@ -1,0 +1,45 @@
+/* */
+:host {
+    flex: 1 1 186px;
+}
+
+/* Styling card container */
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    background-color: var(--columbia-blue-main);
+
+    max-width: 186px;
+    height: 170px;
+
+    /* Setting border-box to avoid unnecessary container size growth */
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 15px 10px 10px;
+}
+
+/* Styling container holding sunrise/sunset containers */
+.dataContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Styling sunrise/sunset container */
+.timeContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+}
+
+/* Styling card text */
+p, span {
+    font-family: 'Geist Mono', sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 163.2%;
+    color: var(--outer-black-main);
+}
