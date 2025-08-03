@@ -15,6 +15,12 @@ import { WeatherInfoType } from "../../../utilities/enums/weather-info-type.enum
 })
 export class WeatherCardComponent {
   /**
+   * This enum property was declared to be used inside component template to properly display time
+   * based on WeatherInfoType enum.
+   */
+  protected readonly WeatherInfoType = WeatherInfoType;
+
+  /**
    * This property is used to save getWeatherIconPath function, which enables it to be used in the component template.
    */
   protected readonly getWeatherIconPath = getWeatherIconPath;
@@ -58,5 +64,4 @@ export class WeatherCardComponent {
    * <app-weather-card [weatherInfoType]="WeatherInfoType.Hourly" />
    */
   weatherInfoType = input.required<WeatherInfoType>();
-  protected readonly WeatherInfoType = WeatherInfoType;
 }
