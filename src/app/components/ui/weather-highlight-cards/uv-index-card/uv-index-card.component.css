@@ -1,0 +1,39 @@
+/* This rule allows host element to dynamically get space in parent flex container */
+:host {
+    flex: 1 1 186px;
+}
+
+/* Styling Card Container */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background-color: var(--columbia-blue-main);
+
+    max-width: 186px;
+    height: 170px;
+
+    /* Setting border-box to avoid unnecessary container size growth */
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 15px 10px 53px 10px;
+}
+
+/* Styling title text */
+p {
+    font-family: 'Geist Mono', sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 163.2%;
+    color: var(--outer-black-main);
+}
+
+/* Styling index text */
+span {
+    font-family: 'Geist', sans-serif;
+    font-weight: 400;
+    font-size: 48px;
+    text-align: center;
+    line-height: 62px;
+}
