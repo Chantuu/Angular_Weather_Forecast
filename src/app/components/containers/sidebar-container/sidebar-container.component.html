@@ -12,11 +12,11 @@
         <!-- If WeatherService successfully retrieved weather data from Open-Meteo API for corresponding city -->
         @if (weatherDataValue) {
             <app-weather-tab
-                    [weatherTemperature]="weatherDataValue.daily.temperatureMax[0]"
-                    [currentDate]="weatherDataValue.daily.date[0]"
+                    [weatherTemperature]="weatherDataValue.daily[0].temperatureMax"
+                    [currentDate]="weatherDataValue.daily[0].date"
                     [currentCityName]="weatherDataValue.city"
-                    [weatherCode]="weatherDataValue.daily.weatherCode[0]"
-                    [weatherPrecipitationProbability]="weatherDataValue.daily.precipitationProbability"
+                    [weatherCode]="weatherDataValue.daily[0].weatherCode"
+                    [weatherPrecipitationProbability]="weatherDataValue.daily[0].precipitationProbability"
             />
         }
         @else {

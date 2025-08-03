@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import axios from "axios";
-import {WeatherData} from "../utilities/types/weather-data.type";
-import {BehaviorSubject} from "rxjs";
+import { WeatherData } from "../utilities/types/weather-data.type";
+import { BehaviorSubject } from "rxjs";
+import { v4 as uuid4 } from "uuid";
 
 /**
  * This service class is responsible for retrieving and managing Open-Meteo APIs weather data for different components
@@ -41,21 +42,6 @@ export class WeatherService {
     // This line is enough simply, because API returns hourly weather data for specified days too and using this method
     // only returns hourly weather data of the first dat.
     return desiredHourlyWeatherDataArray.slice(0, 24);
-  }
-
-  /**
-   * This private method is used to convert date/time string data from Open-Meteo API response into the date objects.
-   *
-   * @param timeArray - Array containing date/time strings.
-   */
-  private convertTimeToDateObject(timeArray: string[]) {
-    const convertedDateArray: Date[] = [];
-
-    for (let i = 0; i < timeArray.length; i++) {
-      convertedDateArray.push(new Date(timeArray[i]));
-    }
-
-    return convertedDateArray;
   }
 
   /**
@@ -100,27 +86,68 @@ export class WeatherService {
       url: `https://api.open-meteo.com/v1/forecast?latitude=${cityGeocode.latitude}&longitude=${cityGeocode.longitude}&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,wind_speed_10m_max,precipitation_probability_mean&hourly=weather_code,temperature_2m&timezone=auto`
     });
 
+    // Initialization of the daily weather object array
+    const dailyWeatherDataArray: {
+      uuid: string,
+      date: Date,
+      weatherCode: number,
+      temperatureMax: number,
+      temperatureMin: number,
+      uvIndex: number,
+      sunrise: Date,
+      sunset: Date,
+      precipitationProbability: number,
+      windSpeed: number,
+    }[] = [];
+    // Initialization of the hourly weather object array
+    const hourlyWeatherDataArray: {
+      uuid: string,
+      temperature: number,
+      time: Date,
+      weatherCode: number,
+    }[] = [];
+
+    // Populating dailyWeatherDataArray with the weather information of each day
+    for (let i = 0; i < response.data.daily.weather_code.length; i++) {
+      dailyWeatherDataArray[i] = {
+        uuid: uuid4(),
+        date: new Date(response.data.daily.time[i]),
+        weatherCode: response.data.daily.weather_code[i],
+        temperatureMax: response.data.daily.temperature_2m_max[i],
+        temperatureMin: response.data.daily.temperature_2m_min[i],
+        uvIndex: response.data.daily.uv_index_max[i],
+        sunrise: new Date(response.data.daily.sunrise[i]),
+        sunset: new Date(response.data.daily.sunset[i]),
+        precipitationProbability: response.data.daily.precipitation_probability_mean[i],
+        windSpeed: response.data.daily.wind_speed_10m_max[i],
+      };
+    }
+
+    /*  Extracting hourly weather data for 24 hours from received Open-meteo's response object, which contains
+       hourly weather data for other days too.*/
+    const hourlyTemperatureArray =
+        this.extractHourlyWeatherDataFromResponseArrays<number>(response.data.hourly.temperature_2m);
+    const hourlyTimeArray = this.extractHourlyWeatherDataFromResponseArrays<string>(response.data.hourly.time);
+    const hourlyWeatherCodeArray =
+            this.extractHourlyWeatherDataFromResponseArrays<number>(response.data.hourly.weather_code);
+
+    // Getting length from the above array to properly populate hourlyWeatherDataArray
+    const hourlyDataArrayLength = hourlyWeatherCodeArray.length;
+
+    // // Populating hourlyWeatherDataArray with the weather information of each hour
+    for (let i = 0; i < hourlyDataArrayLength; i++) {
+      hourlyWeatherDataArray[i] = {
+        uuid: uuid4(),
+        temperature: hourlyTemperatureArray[i],
+        time: new Date(hourlyTimeArray[i]),
+        weatherCode: hourlyWeatherCodeArray[i],
+      };
+    }
+
     const weatherDataResult: WeatherData = {
       city: cityGeocode.cityName,
-      daily: {
-        date: this.convertTimeToDateObject(response.data.daily.time), // Converts date strings to Date objects.
-        weatherCode: response.data.daily.weather_code,
-        temperatureMax: response.data.daily.temperature_2m_max,
-        temperatureMin: response.data.daily.temperature_2m_min,
-        uvIndex: response.data.daily.uv_index_max,
-        sunrise: this.convertTimeToDateObject(response.data.daily.sunrise)[0], // Convert and Get Sunrise time for first day
-        sunset: this.convertTimeToDateObject(response.data.daily.sunset)[0], // Convert and Get Sunset time for first day
-        precipitationProbability: response.data.daily.precipitation_probability_mean[0], // Get precipitation probability for first day
-        windSpeed: response.data.daily.wind_speed_10m_max[0], // Get wind speed for first day
-      },
-      hourly: {
-        // Hourly temperature data is extracted for one day
-        temperature: this.extractHourlyWeatherDataFromResponseArrays<number>(response.data.hourly.temperature_2m),
-        // Hourly time data is extracted for one day and then converted into the Date objects.
-        time: this.convertTimeToDateObject(this.extractHourlyWeatherDataFromResponseArrays<string>(response.data.hourly.time)),
-        // Hourly weather code is extracted for one day
-        weatherCode: this.extractHourlyWeatherDataFromResponseArrays<number>(response.data.hourly.weather_code),
-      }
+      daily: dailyWeatherDataArray,
+      hourly: hourlyWeatherDataArray
     }
 
     // sharedWeatherData behaviorSubject is updated with recent WeatherData object which is necessary to share weather
