@@ -3,6 +3,7 @@ import {NgStyle} from "@angular/common";
 import {
   getWeatherIconPath
 } from "../../../utilities/functions/get-weather-icon-path.function";
+import { WeatherInfoType } from "../../../utilities/enums/weather-info-type.enum";
 
 @Component({
   selector: 'app-weather-card',
@@ -44,7 +45,18 @@ export class WeatherCardComponent {
    *
    * Usage example:
    * @example
-   * <app-weather-card [weatherDateTime]="01:00 | Tuesday" />
+   * <app-weather-card [weatherDateTime]="new Date(2025, 8, 12)" />
    */
-  weatherDateTime = input.required<string>();
+  weatherDateTime = input.required<Date>();
+
+  /**
+   * This required input awaits WeatherInfoType enum, which will tell this component to display weather time
+   * in hour or weekday format.
+   *
+   * Usage example:
+   * @example
+   * <app-weather-card [weatherInfoType]="WeatherInfoType.Hourly" />
+   */
+  weatherInfoType = input.required<WeatherInfoType>();
+  protected readonly WeatherInfoType = WeatherInfoType;
 }
