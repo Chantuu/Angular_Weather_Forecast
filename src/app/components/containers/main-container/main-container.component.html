@@ -1,3 +1,9 @@
-<app-weather-card-section sectionTitle="Hour" [weatherInfoType]="WeatherInfoType.Hourly" />
-<app-weather-card-section sectionTitle="Week" [weatherInfoType]="WeatherInfoType.Daily" />
-<app-weather-highlight-section />
+@let sharedWeatherDataValue = sharedWeatherData();
+@if (sharedWeatherDataValue) {
+    <app-weather-card-section sectionTitle="Hour" [weatherInfoType]="WeatherInfoType.Hourly" />
+    <app-weather-card-section sectionTitle="Week" [weatherInfoType]="WeatherInfoType.Daily" />
+    <app-weather-highlight-section />
+}
+@else {
+    <h1>Please choose the city to display weather data</h1>
+}
