@@ -1,4 +1,4 @@
-/* */
+/* This rule allows host element to dynamically get space in parent flex container */
 :host {
     flex: 1 1 186px;
 }
