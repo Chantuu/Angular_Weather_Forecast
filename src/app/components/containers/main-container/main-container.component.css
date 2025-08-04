@@ -5,13 +5,21 @@
     /* This rule prevents overflow of the weather cards in main container */
     min-width: 0;
 
+    /* Setting this height allows host element to be scrollable without overflow issues */
+    max-height: 100vh;
+
     /* Align Items Correctly inside Container */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 50px;
 
     padding: 35px 60px 72px;
 
     /* Used to Avoid Unnecessary Growth of the Element and Overflow */
     box-sizing: border-box;
+
+    /* Making host element scrollable */
+    overflow-y: auto;
+    white-space: nowrap;
 }
