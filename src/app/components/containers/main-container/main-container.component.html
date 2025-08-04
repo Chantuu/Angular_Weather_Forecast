@@ -1,3 +1,5 @@
+<!-- WeatherData object was assigned a variable in here to reduce sharedWeatherData() signal calls and
+        give necessary data to WeatherTabComponent easily -->
 @let sharedWeatherDataValue = sharedWeatherData();
 @if (sharedWeatherDataValue) {
     <app-weather-card-section sectionTitle="Hour" [weatherInfoType]="WeatherInfoType.Hourly" />
