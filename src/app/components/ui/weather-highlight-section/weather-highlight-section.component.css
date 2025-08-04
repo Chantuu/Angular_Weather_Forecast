@@ -1,0 +1,22 @@
+/* Styling main container */
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Styling section header text */
+h2 {
+    font-family: 'Geist', sans-serif;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 47px;
+    letter-spacing: 2px;
+}
+
+/* Aligning highlight cards inside the container */
+.contentContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

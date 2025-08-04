@@ -1,1 +1,16 @@
-<p>weather-highlight-section works!</p>
+<div class="container">
+    <h2>Today's Highlights</h2>
+
+    <!-- WeatherData object was assigned a variable in here to reduce sharedWeatherData() signal calls and
+        give necessary data to highlight card components easily -->
+    @let sharedWeatherDataValue = sharedWeatherData();
+    @if (sharedWeatherDataValue) {
+        <div class="contentContainer">
+            <app-uv-index-card [uvIndex]="sharedWeatherDataValue.daily[0].uvIndex" />
+            <app-sunrise-sunset-card [sunriseTime]="sharedWeatherDataValue.daily[0].sunrise"
+                                     [sunsetTime]="sharedWeatherDataValue.daily[0].sunset"/>
+            <app-rain-chance-card [rainChance]="sharedWeatherDataValue.daily[0].precipitationProbability" />
+            <app-wind-status-card [windStatus]="sharedWeatherDataValue.daily[0].windSpeed" />
+        </div>
+    }
+</div>
