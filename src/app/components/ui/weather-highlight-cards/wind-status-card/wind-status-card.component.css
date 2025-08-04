@@ -1,0 +1,57 @@
+/* This rule allows host element to dynamically get space in parent flex container */
+:host {
+    flex: 1 1 186px;
+}
+
+/* Styling card container */
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    background-color: var(--columbia-blue-main);
+
+    max-width: 186px;
+    height: 170px;
+
+    /* Setting border-box to avoid unnecessary container size growth */
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 15px 10px 10px;
+}
+
+/* Styling container, which contains spans displaying weather status */
+.contentContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+}
+
+/* Styling title text */
+p {
+    font-family: 'Geist Mono', sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 163.2%;
+    color: var(--outer-black-main);
+}
+
+/* Setting font to the weather status spans */
+.windSpeed, .speedUnit {
+    font-family: 'Geist', sans-serif;
+}
+
+/* Styling span which displays wind speed */
+.windSpeed {
+    font-weight: 300;
+    font-size: 44px;
+    line-height: 47px;
+}
+
+/* Styling span which displays wind speed unit */
+.speedUnit {
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 163.2%;
+}
