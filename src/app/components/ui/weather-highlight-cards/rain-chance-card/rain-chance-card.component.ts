@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, input} from '@angular/core';
 
 @Component({
   selector: 'app-rain-chance-card',
@@ -7,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrl: './rain-chance-card.component.css'
 })
 export class RainChanceCardComponent {
-
+  /**
+   * This required input awaits a rain chance value of number type to be displayed inside the component.
+   *
+   * Usage example:
+   * @example
+   * <app-rain-chance-card [rainChance]="22" />
+   */
+  rainChance = input.required<number>();
 }
