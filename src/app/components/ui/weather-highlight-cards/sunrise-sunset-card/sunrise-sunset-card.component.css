@@ -1,6 +1,7 @@
 /* This rule allows host element to dynamically get space in parent flex container */
 :host {
     flex: 1 1 186px;
+    max-width: 186px;
 }
 
 /* Styling card container */
@@ -11,7 +12,6 @@
 
     background-color: var(--columbia-blue-main);
 
-    max-width: 186px;
     height: 170px;
 
     /* Setting border-box to avoid unnecessary container size growth */
