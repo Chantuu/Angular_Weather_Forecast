@@ -1,1 +1,5 @@
-<p>header-toggle-button works!</p>
+@if (buttonType() === HeaderToggleButtonType.celsius) {
+    <span>&deg;C</span>
+} @else if (buttonType() === HeaderToggleButtonType.fahrenheit) {
+    <span>&deg;F</span>
+}

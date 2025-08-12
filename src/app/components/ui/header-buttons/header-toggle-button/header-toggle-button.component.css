@@ -1,0 +1,54 @@
+/* Styling host element with general css rules */
+:host {
+    width: 40px;
+    height: 40px;
+
+    border: none;
+    border-radius: 50%;
+
+    /* Aligning content inside the button */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styling button text */
+span {
+    font-family: "Geist Mono", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 168.2%;
+    color: white;
+
+    /* Offsetting text to better alignment */
+    padding-right: 4px;
+}
+
+/* When toggle button is selected */
+:host.buttonSelected {
+    background-color: var(--picton-blue-main);
+    transition: background-color 0.2s ease-in-out;
+}
+
+:host.buttonSelected:hover {
+    background-color: var(--picton-blue-hover);
+}
+
+:host.buttonSelected:active {
+    background-color: var(--picton-blue-active);
+}
+
+/* When toggle button is not selected */
+:host.buttonNotSelected {
+    background-color: var(--outer-black-main);
+    transition: background-color 0.2s ease-in-out;
+}
+
+:host.buttonNotSelected:hover {
+    background-color: var(--outer-black-hover);
+}
+
+:host.buttonNotSelected:active {
+    background-color: var(--outer-black-active);
+}
