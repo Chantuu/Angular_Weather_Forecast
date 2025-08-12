@@ -39,6 +39,8 @@ table {
 /* Global Variables */
 :root {
     --outer-black-main: #3E4345;
+    --outer-black-hover: #2d3033;
+    --outer-black-active: #232526;
 
     --picton-blue-main: #2AB5FA;
     --picton-blue-hover: #1f91c5;
