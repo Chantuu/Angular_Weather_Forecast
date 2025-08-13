@@ -4,7 +4,7 @@
             'mask-image': getWeatherIconPath(this.weatherCode()),
          }"
     ></div>
-    <span class="sidebarTemperature">{{ this.weatherTemperature() }}&deg;C</span>
+    <span class="sidebarTemperature">{{ this.weatherTemperature() | temperatureFormat }}</span>
     <span class="sidebarDate">{{ currentDate().toLocaleDateString('en-US', { weekday: 'long'}) }}</span>
     <hr />
     <app-sidebar-weather-info

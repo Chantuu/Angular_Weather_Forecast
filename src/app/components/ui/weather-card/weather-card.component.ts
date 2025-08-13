@@ -4,11 +4,13 @@ import {
   getWeatherIconPath
 } from "../../../utilities/functions/get-weather-icon-path.function";
 import { WeatherInfoType } from "../../../utilities/enums/weather-info-type.enum";
+import {TemperatureFormatPipe} from "../../../pipes/temperature-format.pipe";
 
 @Component({
   selector: 'app-weather-card',
   imports: [
-    NgStyle
+    NgStyle,
+    TemperatureFormatPipe
   ],
   templateUrl: './weather-card.component.html',
   styleUrl: './weather-card.component.css'

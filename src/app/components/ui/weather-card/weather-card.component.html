@@ -11,5 +11,5 @@
             'mask-image': getWeatherIconPath(weatherCode(), weatherDateTime())
         }"
     ></div>
-    <p>{{ weatherTemperature() }}&deg;C</p>
+    <p>{{ weatherTemperature() | temperatureFormat }}</p>
 </div>

@@ -4,10 +4,11 @@ import {
   getWeatherIconPath
 } from "../../../utilities/functions/get-weather-icon-path.function";
 import {NgStyle} from "@angular/common";
+import {TemperatureFormatPipe} from "../../../pipes/temperature-format.pipe";
 
 @Component({
   selector: 'app-weather-tab',
-  imports: [SidebarWeatherInfoComponent, NgStyle],
+    imports: [SidebarWeatherInfoComponent, NgStyle, TemperatureFormatPipe],
   templateUrl: './weather-tab.component.html',
   styleUrl: './weather-tab.component.css'
 })
