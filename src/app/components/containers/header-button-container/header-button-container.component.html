@@ -1,1 +1,11 @@
-<p>header-button-container works!</p>
+<app-header-toggle-button
+        [buttonType]="HeaderToggleButtonType.celsius"
+        [buttonSelected]="currentActiveButton() === HeaderToggleButtonType.celsius"
+        (onClick)="toggleButtonClicked($event)"
+/>
+<app-header-toggle-button
+        [buttonType]="HeaderToggleButtonType.fahrenheit"
+        [buttonSelected]="currentActiveButton() === HeaderToggleButtonType.fahrenheit"
+        (onClick)="toggleButtonClicked($event)"
+/>
+<app-header-favorite-button [buttonActivated]="false" />
