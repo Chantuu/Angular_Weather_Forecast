@@ -4,12 +4,14 @@ import {WeatherInfoType} from "../../../utilities/enums/weather-info-type.enum";
 import {WeatherHighlightSectionComponent} from "../../ui/weather-highlight-section/weather-highlight-section.component";
 import {WeatherService} from "../../../services/weather.service";
 import {WeatherData} from "../../../utilities/types/weather-data.type";
+import {HeaderButtonContainerComponent} from "../header-button-container/header-button-container.component";
 
 @Component({
   selector: 'app-main-container',
   imports: [
     WeatherCardSectionComponent,
-    WeatherHighlightSectionComponent
+    WeatherHighlightSectionComponent,
+    HeaderButtonContainerComponent
   ],
   templateUrl: './main-container.component.html',
   styleUrl: './main-container.component.css'
