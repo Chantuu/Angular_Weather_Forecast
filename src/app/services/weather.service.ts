@@ -148,7 +148,7 @@ export class WeatherService {
     }
 
     const weatherDataResult: WeatherData = {
-      city: cityGeocode.cityName,
+      city: cityGeocode,
       daily: dailyWeatherDataArray,
       hourly: hourlyWeatherDataArray
     }
