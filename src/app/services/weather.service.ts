@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable, signal} from '@angular/core';
 import axios from "axios";
 import { WeatherData } from "../utilities/types/weather-data.type";
-import { BehaviorSubject } from "rxjs";
 import { v4 as uuid4 } from "uuid";
+import {CityData} from "../utilities/types/city-data.type";
 
 /**
  * This service class is responsible for retrieving and managing Open-Meteo APIs weather data for different components
@@ -13,24 +13,27 @@ import { v4 as uuid4 } from "uuid";
 })
 export class WeatherService {
   /**
-   * RxJS BehaviorSubject property, which is used to save current weather data in BehaviorSubject object for ability
-   * to share this data with any component injecting this service.
+   * This private signal is used to save currently selected city weather data, which is necessary for sharing it across
+   * different components.
    */
-  private sharedWeatherDataSubject = new BehaviorSubject<WeatherData | null>(null);
+  private _sharedWeatherData = signal<WeatherData | null>(null);
 
   /**
-   * RxJS Observable property, which is used in desired components as an alternative way to get weather data. Note, that
-   * this method is recommended to use in components, where getWeatherData() method won't be used.
-   */
-  sharedWeatherData$ = this.sharedWeatherDataSubject.asObservable();
-
-  /**
-   * This method is used to update contents of the sharedWeatherDataSubject with the provided weatherData parameter.
+   * This getter method returns currently saved weather data to the desired component.
    *
-   * @param weatherData - Desired WeatherData object containing up-to-date weather information.
+   * @returns WeatherData object or null
+   */
+  getSharedWeatherData() {
+    return this._sharedWeatherData();
+  }
+
+  /**
+   * This setter method sets newly requested weather data, which will be shared across different components.
+   *
+   * @param weatherData - Newly requested weather data
    */
   setSharedWeatherData(weatherData: WeatherData) {
-    this.sharedWeatherDataSubject.next(weatherData);
+    this._sharedWeatherData.set(weatherData);
   }
 
   /**
@@ -51,7 +54,7 @@ export class WeatherService {
    * @throws Error - throws error if city with that name was not found or there were connection issues with API.
    * @Warning - This method may be contained inside try/catch block, as this method has probability to throw an error.
    */
-  private async convertCityNameToLatLng(cityName: string) {
+  private async convertCityNameToLatLng(cityName: string): Promise<CityData> {
     const response = await axios({
       method: 'GET',
       url: `https://geocoding-api.open-meteo.com/v1/search?name=${cityName}&count=1&language=en`,
@@ -150,9 +153,7 @@ export class WeatherService {
       hourly: hourlyWeatherDataArray
     }
 
-    // sharedWeatherData behaviorSubject is updated with recent WeatherData object which is necessary to share weather
-    // data to different components in alternative way.
-    this.setSharedWeatherData(weatherDataResult);
+    this.setSharedWeatherData(weatherDataResult); // Save weather data, which will be shared to other components
     return weatherDataResult;
   }
 }

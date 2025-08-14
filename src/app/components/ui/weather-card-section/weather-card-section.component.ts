@@ -1,4 +1,4 @@
-import {Component, input, OnInit, signal} from '@angular/core';
+import {Component, computed, input,} from '@angular/core';
 import {WeatherInfoType} from "../../../utilities/enums/weather-info-type.enum";
 import {WeatherCardComponent} from "../weather-card/weather-card.component";
 import {WeatherService} from "../../../services/weather.service";
@@ -12,20 +12,8 @@ import {WeatherData} from "../../../utilities/types/weather-data.type";
   templateUrl: './weather-card-section.component.html',
   styleUrl: './weather-card-section.component.css'
 })
-export class WeatherCardSectionComponent implements OnInit {
+export class WeatherCardSectionComponent {
   constructor(private weatherService: WeatherService) {
-  }
-
-  /**
-   * This life-hook method is used to set up RxJS subscription with WeatherService,
-   * which will return WeatherData object containing Open-meteo API response data and
-   * set it in this component as property. This subscription will automatically
-   * update this property with new value when a change occurs.
-   */
-  ngOnInit(): void {
-    this.weatherService.sharedWeatherData$.subscribe(data => {
-      this.sharedWeatherData.set(data);
-    });
   }
 
   /**
@@ -35,9 +23,10 @@ export class WeatherCardSectionComponent implements OnInit {
   protected readonly WeatherInfoType = WeatherInfoType;
 
   /**
-   * This property is signal, which is used to save WeatherData shared from WeatherService using RxJS.
+   * This computed signal is used to save currently searched city weather data to this component, which will be used
+   * inside the component's template.
    */
-  sharedWeatherData = signal<WeatherData | null>(null);
+  sharedWeatherData = computed(() => this.weatherService.getSharedWeatherData());
 
   /**
    * This input awaits title string, which will be displayed as the section's title.
