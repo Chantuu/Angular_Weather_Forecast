@@ -63,6 +63,7 @@ export class WeatherService {
     // If city was successfully found
     if (response.data.results) {
       return {
+        id: uuid4(),
         cityName: response.data.results[0].name,
         latitude: response.data.results[0].latitude,
         longitude: response.data.results[0].longitude,
