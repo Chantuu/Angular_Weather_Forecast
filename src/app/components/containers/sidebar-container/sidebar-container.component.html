@@ -14,7 +14,7 @@
             <app-weather-tab
                     [weatherTemperature]="weatherDataValue.daily[0].temperatureMax"
                     [currentDate]="weatherDataValue.daily[0].date"
-                    [currentCityName]="weatherDataValue.city"
+                    [currentCityName]="weatherDataValue.city.cityName"
                     [weatherCode]="weatherDataValue.daily[0].weatherCode"
                     [weatherPrecipitationProbability]="weatherDataValue.daily[0].precipitationProbability"
             />
