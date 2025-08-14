@@ -7,6 +7,9 @@
 
     background-color: var(--outer-black-main);
     padding: 35px 60px 72px 60px;
+
+    /* Prevent vertical overflow */
+    max-height: 100vh;
 }
 
 /* Making Both Containers Flex Containers */
