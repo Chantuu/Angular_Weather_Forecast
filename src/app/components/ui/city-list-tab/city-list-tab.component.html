@@ -1,1 +1,12 @@
-<p>city-list-tab works!</p>
+@let cityList = favoriteCitiesList();
+@let currentCity = sharedWeatherData()?.city;
+
+@if (cityList) {
+    @for (city of cityList; track city.id) {
+        <app-city-list-item [cityData]="city"
+                            [currentListItemSelected]="currentCity?.id === city.id"
+                            (onDeleteClick)="deleteButtonClicked($event)"
+                            (onListItemClick)="listItemClicked($event)"
+        />
+    }
+}
