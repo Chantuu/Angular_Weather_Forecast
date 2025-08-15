@@ -7,10 +7,11 @@ import {CitySearchBarComponent} from "../../ui/city-search-bar/city-search-bar.c
 import {WeatherService} from "../../../services/weather.service";
 import {WeatherData} from "../../../utilities/types/weather-data.type";
 import {NaComponent} from "../../ui/na/na.component";
+import {CityListTabComponent} from "../../ui/city-list-tab/city-list-tab.component";
 
 @Component({
   selector: 'app-sidebar-container',
-  imports: [SidebarButtonComponent, WeatherTabComponent, AboutTabComponent, CitySearchBarComponent, NaComponent],
+  imports: [SidebarButtonComponent, WeatherTabComponent, AboutTabComponent, CitySearchBarComponent, NaComponent, CityListTabComponent],
   templateUrl: './sidebar-container.component.html',
   styleUrl: './sidebar-container.component.css'
 })
@@ -60,6 +61,20 @@ export class SidebarContainerComponent {
   async onFormSubmit(CityName: string) {
       try {
         const resultData = await this.weatherService.getWeatherData(CityName);
+        const currentCity = resultData.city;
+
+        // If city data is defined
+        if (currentCity) {
+          // If this city is already added to the list, make button active
+          if (this.weatherService.cityExistsInFavoriteCitiesList(currentCity)) {
+            this.weatherService.setFavoriteButtonState(true);
+          }
+          // If this city is not already added to the list, do not make button active
+          else {
+            this.weatherService.setFavoriteButtonState(false);
+          }
+        }
+
         this.weatherData.set(resultData);
       }
       catch (error) {

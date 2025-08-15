@@ -1,10 +1,11 @@
-import {Component, signal} from '@angular/core';
+import {Component, computed, signal} from '@angular/core';
 import {HeaderToggleButtonComponent} from "../../ui/header-buttons/header-toggle-button/header-toggle-button.component";
 import {HeaderToggleButtonType} from "../../../utilities/enums/header-toggle-button-type.enum";
 import {
   HeaderFavoriteButtonComponent
 } from "../../ui/header-buttons/header-favorite-button/header-favorite-button.component";
 import {TemperatureFormatService} from "../../../services/temperature-format.service";
+import {WeatherService} from "../../../services/weather.service";
 
 @Component({
   selector: 'app-header-button-container',
@@ -16,7 +17,8 @@ import {TemperatureFormatService} from "../../../services/temperature-format.ser
   styleUrl: './header-button-container.component.css'
 })
 export class HeaderButtonContainerComponent {
-  constructor(private temperatureFormatService: TemperatureFormatService) {}
+  constructor(private readonly temperatureFormatService: TemperatureFormatService,
+              private readonly weatherService: WeatherService) {}
 
   /**
    * This property contains HeaderToggleButtonType type, which is necessary to use it inside the component's template.
@@ -24,11 +26,22 @@ export class HeaderButtonContainerComponent {
   protected readonly HeaderToggleButtonType = HeaderToggleButtonType;
 
   /**
+   * This computed signal is used to make currently searched city available to this component.
+   */
+  sharedWeatherData = computed(() => this.weatherService.getSharedWeatherData());
+
+  /**
    * This signal is used to manage which toggle button is currently active, which in turn determines, which format is
    * used to display temperature.
    */
-  protected currentActiveButton =
+  currentActiveButton =
       signal<HeaderToggleButtonType>(HeaderToggleButtonType.celsius);
+
+  /**
+   * This computed signal is used to make favorite button active conditionally from the service.
+   */
+  favoriteButtonActive =
+      computed(() => this.weatherService.getFavoriteButtonState()());
 
   /**
    * This function is used to set currently clicked toggle button as an active button, which will be used to set
@@ -39,5 +52,27 @@ export class HeaderButtonContainerComponent {
   toggleButtonClicked(buttonType: HeaderToggleButtonType) {
     this.currentActiveButton.set(buttonType);
     this.temperatureFormatService.setTemperatureFormat(buttonType);
+  }
+
+  /**
+   * This method is used to handle click event from the HeaderFavoriteButton Component and make that button active
+   * conditionally.
+   */
+  favoriteButtonClicked() {
+    const currentCity = this.sharedWeatherData()?.city;
+
+    // If current city data is available
+    if (currentCity) {
+      // If current city is not added to the favorite cities list, add it
+      if (!this.weatherService.cityExistsInFavoriteCitiesList(currentCity)) {
+        this.weatherService.addCityToFavoriteCitiesList(currentCity);
+        this.weatherService.setFavoriteButtonState(true);
+      }
+      // If current city is added to the favorite cities list, remove it
+      else {
+        this.weatherService.removeCityFromFavoriteCitiesList(currentCity);
+        this.weatherService.setFavoriteButtonState(false);
+      }
+    }
   }
 }

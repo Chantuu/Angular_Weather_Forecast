@@ -8,4 +8,4 @@
         [buttonSelected]="currentActiveButton() === HeaderToggleButtonType.fahrenheit"
         (onClick)="toggleButtonClicked($event)"
 />
-<app-header-favorite-button [buttonActivated]="false" />
+<app-header-favorite-button [buttonActivated]="favoriteButtonActive()" (onClick)="favoriteButtonClicked()" />
