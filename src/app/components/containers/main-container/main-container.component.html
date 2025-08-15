@@ -2,10 +2,10 @@
         give necessary data to WeatherTabComponent easily -->
 @let sharedWeatherDataValue = sharedWeatherData();
 @if (sharedWeatherDataValue) {
-    <app-weather-card-section sectionTitle="Hour" [weatherInfoType]="WeatherInfoType.Hourly">
+    <app-weather-card-section sectionTitle="Hourly" [weatherInfoType]="WeatherInfoType.Hourly">
         <app-header-button-container />
     </app-weather-card-section>
-    <app-weather-card-section sectionTitle="Week" [weatherInfoType]="WeatherInfoType.Daily" />
+    <app-weather-card-section sectionTitle="Daily" [weatherInfoType]="WeatherInfoType.Daily" />
     <app-weather-highlight-section />
 }
 @else {
