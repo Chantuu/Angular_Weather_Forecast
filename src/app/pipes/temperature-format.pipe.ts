@@ -15,7 +15,6 @@ export class TemperatureFormatPipe implements PipeTransform {
   }
 
   transform(value: number): string {
-    console.log(this.temperatureFormatService.getTemperatureFormat());
     if (this.temperatureFormatService.getTemperatureFormat() === HeaderToggleButtonType.fahrenheit) {
       return `${Math.round(((value * (9 / 5)) + 32) * 10) / 10}℉`; // Fahrenheit is rounded to 1 decimal
     } else {
