@@ -284,8 +284,6 @@ export class WeatherService {
   removeCityFromFavoriteCitiesList(cityData: CityData) {
     if (this.cityExistsInFavoriteCitiesList(cityData)) {
       const result = this._favoriteCitiesList().filter((currentCity) => {
-        console.log(cityData.id);
-        console.log(currentCity.id !== cityData.id);
         return currentCity.id !== cityData.id;
       });
       console.log(result);
