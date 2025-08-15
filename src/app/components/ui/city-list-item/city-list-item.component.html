@@ -1,1 +1,8 @@
-<p>city-list-item works!</p>
+<p (click)="listItemClicked()"
+   [class.listItemSelected]="currentListItemSelected()"
+>
+    {{ cityData().cityName }}
+</p>
+<button (click)="deleteButtonClicked()">
+    <div class="buttonIcon"></div>
+</button>

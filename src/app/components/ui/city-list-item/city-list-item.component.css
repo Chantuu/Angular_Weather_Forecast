@@ -1,0 +1,89 @@
+/* Styling host element to align items */
+:host {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Removing styling from button element */
+button {
+    border: none;
+    background: none;
+}
+
+/* Setting cursor style */
+p, p.listItemSelected, .buttonIcon {
+    cursor: pointer;
+}
+
+/* Styling component text */
+p {
+    max-width: 285px;
+
+    font-family: "Geist Mono", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 163.2%;
+
+    color: var(--columbia-blue-main);
+    transition: color 0.2s ease-in-out;
+
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* When hovering list item text */
+:host p:hover {
+    color: var(--columbia-blue-hover);
+}
+
+/* When clicking list item text */
+:host p:active {
+    color: var(--columbia-blue-active);
+}
+
+/* Styling active list item */
+p.listItemSelected {
+    color: var(--picton-blue-main);
+}
+
+/* When hovering active list item text */
+:host p.listItemSelected:hover {
+    color: var(--picton-blue-hover);
+}
+
+/* When clicking active list item text */
+:host p.listItemSelected:active {
+    color: var(--picton-blue-active);
+}
+
+/* Styling button icon */
+.buttonIcon {
+    width: 28px;
+    height: 28px;
+
+    background-color: var(--columbia-blue-main);
+    transition: background-color 0.2s ease-in-out;
+
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    mask-image: url("/assets/button_Icons/delete.svg");
+
+    /* For supporting legacy browsers */
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+    -webkit-mask-image: url("/assets/button_Icons/delete.svg");
+}
+
+/* When hovering button icon */
+.buttonIcon:hover {
+    background-color: var(--delete-color-hover);
+}
+
+/* When clicking button icon */
+.buttonIcon:active {
+    background-color: var(--delete-color-active);
+}
