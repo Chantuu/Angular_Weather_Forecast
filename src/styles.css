@@ -52,5 +52,8 @@ table {
 
     --indigo-dye-main: #17465E;
 
+    --delete-color-hover: #ED455D;
+    --delete-color-active: #d23e51;
+
     font-family: "Geist Mono", sans-serif;
 }
