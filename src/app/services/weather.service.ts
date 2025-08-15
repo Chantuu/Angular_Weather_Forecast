@@ -37,6 +37,16 @@ export class WeatherService {
   }
 
   /**
+   * This private signal is used to manage HeaderFavoriteButton Component state.
+   */
+  private _favoriteButtonState = signal<boolean>(false);
+
+  /**
+   * This private signal is used to save and manage favorite cities.
+   */
+  private _favoriteCitiesList = signal<CityData[]>([]);
+
+  /**
    * This generic private method is used to extract hourly weather data for first day from the Open-Meteo API response.
    *
    * @param desiredHourlyWeatherDataArray - Array containing desired hourly data from API response.
@@ -62,12 +72,20 @@ export class WeatherService {
 
     // If city was successfully found
     if (response.data.results) {
-      return {
+      const result = {
         id: uuid4(),
         cityName: response.data.results[0].name,
         latitude: response.data.results[0].latitude,
         longitude: response.data.results[0].longitude,
       };
+
+      // If this city is already saved to the favorite list, do not generate new id
+      const favoriteCurrentCity = this.returnCityIfExistsInFavoriteCitiesList(result);
+      if (favoriteCurrentCity) {
+        result.id = favoriteCurrentCity.id;
+      }
+
+      return result;
     }
     else {
       throw new Error(`Unable to find city ${cityName}`);
@@ -75,19 +93,17 @@ export class WeatherService {
   }
 
   /**
-   * This async method is used to get full weather data for desired city using the Open-Meteo API.
+   * This private helper method is responsible for retrieving weather data from the Open-Meteo's API. It awaits
+   * CityData object as a parameter to retrieve corresponding weather data.
    *
-   * @param cityName - Desired city to get weather data for.
-   * @return Promise<WeatherData> - Promise containing WeatherData object, where all weather related information is
-   * saved compactly.
-   * @Warning - This method must be contained inside try/catch block, as this method has probability to throw an error.
+   * @param cityData - CitiData object containing necessary information to retrieve weather data
+   * @returns Promise<WeatherData> - Promise containing retrieved weather data
+   * @throws Error - Axios error
    */
-  async getWeatherData(cityName: string): Promise<WeatherData> {
-    const cityGeocode = await this.convertCityNameToLatLng(cityName);
-
+  private async getWeatherDataFromApi(cityData: CityData) {
     const response = await axios({
       method: 'GET',
-      url: `https://api.open-meteo.com/v1/forecast?latitude=${cityGeocode.latitude}&longitude=${cityGeocode.longitude}&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,wind_speed_10m_max,precipitation_probability_mean&hourly=weather_code,temperature_2m&timezone=auto`
+      url: `https://api.open-meteo.com/v1/forecast?latitude=${cityData.latitude}&longitude=${cityData.longitude}&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,wind_speed_10m_max,precipitation_probability_mean&hourly=weather_code,temperature_2m&timezone=auto`
     });
 
     // Initialization of the daily weather object array
@@ -149,12 +165,135 @@ export class WeatherService {
     }
 
     const weatherDataResult: WeatherData = {
-      city: cityGeocode,
+      city: cityData,
       daily: dailyWeatherDataArray,
       hourly: hourlyWeatherDataArray
     }
 
     this.setSharedWeatherData(weatherDataResult); // Save weather data, which will be shared to other components
     return weatherDataResult;
+  }
+
+  /**
+   * This async method is responsible for getting weather data using only city name as a parameter. Behind the scenes,
+   * it uses private method to retrieve weather data.
+   *
+   * @param cityName - String containing the name of the desired city
+   * @returns Promise<WeatherData> - Promise containing corresponding weather data
+   * @throws Error - Axios error
+   */
+  async getWeatherData(cityName: string): Promise<WeatherData> {
+    const cityData = await this.convertCityNameToLatLng(cityName);
+
+    return await this.getWeatherDataFromApi(cityData);
+  }
+
+  /**
+   * This async method is responsible for getting weather data using CityData object of the desired city
+   * name as a parameter. Behind the scenes, it uses private method to retrieve weather data.
+   *
+   * @param cityData - CityData object containing necessary information of the desired city
+   * @returns Promise<WeatherData> - Promise containing corresponding weather data
+   * @throws Error - Axios error
+   */
+  async getWeatherDataFromList(cityData: CityData): Promise<WeatherData> {
+    return await this.getWeatherDataFromApi(cityData);
+  }
+
+  /**
+   * This method returns readonly variant of the favoriteButtonState signal.
+   *
+   * @returns Signal<boolean> - Signal containing favorteButtonComponents state
+   */
+  getFavoriteButtonState() {
+    return this._favoriteButtonState.asReadonly();
+  }
+
+  /**
+   * This method is used to control HeaderFavoriteButton Component activation state.
+   *
+   * @param state - Make HeaderFavoriteButton Component active or inactive
+   */
+  setFavoriteButtonState(state: boolean) {
+    this._favoriteButtonState.set(state);
+  }
+
+  /**
+   * This method is used to return currently available favorite cities list value from the signal.
+   *
+   * @returns CityData[] - List of CityData objects
+   */
+  getFavoriteCitiesList() {
+    return this._favoriteCitiesList();
+  }
+
+  /**
+   * This private method checks, if desired city exists inside the favorite cities list and returns corresponding
+   * CityData object if it exists, otherwise undefined.
+   *
+   * @param cityData - Desired CityData object to be searched.
+   * @returns CityData | undefined
+   */
+  private returnCityIfExistsInFavoriteCitiesList(cityData: CityData) {
+    return this._favoriteCitiesList().find((currentCity) => (
+        currentCity.cityName === cityData.cityName &&
+        currentCity.latitude === cityData.latitude &&
+        currentCity.longitude === cityData.longitude
+    ));
+  }
+
+  /**
+   * This method checks if the desired city is saved in the favorite cities list.
+   *
+   * @param cityData - Desired city to be searched
+   * @returns Boolean - Boolean value meaning desired city exists/not exists in the list
+   */
+  cityExistsInFavoriteCitiesList(cityData: CityData) {
+    const result = this.returnCityIfExistsInFavoriteCitiesList(cityData);
+
+    if (result) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  /**
+   * This method adds desired city to the favorite cities list, where it checks, if it already exists in this list.
+   * If it exists, error is thrown.
+   *
+   * @param cityData - Desired city to be added
+   * @throws Error - Desired city already exists in the list
+   */
+  addCityToFavoriteCitiesList(cityData: CityData) {
+    if (!this.cityExistsInFavoriteCitiesList(cityData)) {
+      this._favoriteCitiesList().push(cityData);
+    }
+    else {
+      throw new Error(`Unable to add ${cityData.cityName} to favorite cities list, because it already exists.`);
+    }
+  }
+
+  /**
+   * This method removes desired city from the favorite cities list, where it checks, if it already exists in this list.
+   * If it does not exist, error is thrown.
+   *
+   * @param cityData - Desired city to be removed
+   * @throws Error - Desired city does not exist in the list
+   */
+  removeCityFromFavoriteCitiesList(cityData: CityData) {
+    if (this.cityExistsInFavoriteCitiesList(cityData)) {
+      const result = this._favoriteCitiesList().filter((currentCity) => {
+        console.log(cityData.id);
+        console.log(currentCity.id !== cityData.id);
+        return currentCity.id !== cityData.id;
+      });
+      console.log(result);
+      this._favoriteCitiesList.set([...result]);
+    }
+    else {
+      throw new
+      Error(`Unable to delete ${cityData.cityName} from favorite cities list, because it does not exist`);
+    }
   }
 }
