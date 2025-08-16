@@ -14,6 +14,15 @@
     align-items: center;
 }
 
+/* Styling container of the weather information */
+.weatherInformationContainer {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 /* Styling Weather Icon */
 .weatherIcon {
     margin-top: 6%;
@@ -65,4 +74,10 @@ hr {
 /* Class Giving Any Element Bottom Margin */
 .marginBottom {
     margin-bottom: 17px;
+}
+
+@media (max-width: 996px) {
+    .container {
+        flex-direction: row;
+    }
 }

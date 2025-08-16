@@ -4,14 +4,16 @@
             'mask-image': getWeatherIconPath(this.weatherCode()),
          }"
     ></div>
-    <span class="sidebarTemperature">{{ this.weatherTemperature() | temperatureFormat }}</span>
-    <span class="sidebarDate">{{ currentDate().toLocaleDateString('en-US', { weekday: 'long'}) }}</span>
-    <hr />
-    <app-sidebar-weather-info
-            class="marginBottom"
-            iconName="location_sidebar_info"
-            iconAltText="Location Icon">City - {{ this.currentCityName() }}</app-sidebar-weather-info>
-    <app-sidebar-weather-info
-            iconName="raindrop_sidebar_info"
-            iconAltText="Rain Drop Icon">Rain - {{ this.weatherPrecipitationProbability() }}&percnt;</app-sidebar-weather-info>
+    <div class="weatherInformationContainer">
+        <span class="sidebarTemperature">{{ this.weatherTemperature() | temperatureFormat }}</span>
+        <span class="sidebarDate">{{ currentDate().toLocaleDateString('en-US', { weekday: 'long'}) }}</span>
+        <hr />
+        <app-sidebar-weather-info
+                class="marginBottom"
+                iconName="location_sidebar_info"
+                iconAltText="Location Icon">City - {{ this.currentCityName() }}</app-sidebar-weather-info>
+        <app-sidebar-weather-info
+                iconName="raindrop_sidebar_info"
+                iconAltText="Rain Drop Icon">Rain - {{ this.weatherPrecipitationProbability() }}&percnt;</app-sidebar-weather-info>
+    </div>
 </div>
