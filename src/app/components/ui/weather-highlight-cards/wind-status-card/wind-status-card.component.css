@@ -57,7 +57,7 @@ p {
 }
 
 /* Tablet view */
-@media (max-width: 996px) {
+@media (max-width: 1024px) {
     /* Styling host element */
     :host {
         flex: 1 0 162px;

@@ -24,7 +24,7 @@ img {
 }
 
 /* Tablet view */
-@media (max-width: 996px) {
+@media (max-width: 1024px) {
     /* Styling NA icon */
     img {
         margin-top: 8%;

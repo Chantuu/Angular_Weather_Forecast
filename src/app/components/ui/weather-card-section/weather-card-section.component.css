@@ -36,7 +36,7 @@ h2 {
 }
 
 /* Tablet view */
-@media (max-width: 996px) {
+@media (max-width: 1024px) {
     /* Styling host element */
     :host {
         gap: 24px;

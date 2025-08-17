@@ -20,7 +20,7 @@ p {
 }
 
 /* Tablet View */
-@media (max-width: 996px) {
+@media (max-width: 1024px) {
     /* Styling Header */
     h1 {
         margin-top: 21px;

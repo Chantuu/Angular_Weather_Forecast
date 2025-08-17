@@ -77,7 +77,7 @@ hr {
 }
 
 /* Tablet view */
-@media (max-width: 996px) {
+@media (max-width: 1024px) {
     /* Styling main container */
     .container {
         flex-direction: row;

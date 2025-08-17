@@ -94,7 +94,7 @@ p.listItemSelected {
 }
 
 /* Tablet view */
-@media (max-width: 996px) {
+@media (max-width: 1024px) {
     /* Removing unnecessary icons */
     .buttonIcon:hover, .buttonIcon:active {
         background-color: unset;

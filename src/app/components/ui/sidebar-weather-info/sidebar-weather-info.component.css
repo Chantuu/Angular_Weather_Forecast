@@ -27,7 +27,7 @@ span {
 }
 
 /* Tablet view */
-@media (max-width: 996px) {
+@media (max-width: 1024px) {
     .container {
         gap: 21px;
     }
