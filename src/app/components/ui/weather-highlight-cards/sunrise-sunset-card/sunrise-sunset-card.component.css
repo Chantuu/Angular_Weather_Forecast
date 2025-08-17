@@ -43,3 +43,30 @@ p, span {
     line-height: 163.2%;
     color: var(--outer-black-main);
 }
+
+/* Tablet view */
+@media (max-width: 996px) {
+    /* Styling host element */
+    :host {
+        flex: 1 0 162px;
+        max-width: 162px;
+    }
+
+    /* Styling container */
+    .container {
+        height: 150px;
+        padding: 15px 10px 22px 10px;
+
+        gap: 3px;
+    }
+
+    /* Styling container holding sunrise/sunset containers */
+    .dataContainer {
+        gap: 1px;
+    }
+
+    /* Styling card title */
+    p {
+        text-wrap: wrap;
+    }
+}

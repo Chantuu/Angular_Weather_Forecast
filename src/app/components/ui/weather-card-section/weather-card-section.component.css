@@ -34,3 +34,11 @@ h2 {
 ::-webkit-scrollbar {
     display: none;
 }
+
+/* Tablet view */
+@media (max-width: 996px) {
+    /* Styling host element */
+    :host {
+        gap: 24px;
+    }
+}

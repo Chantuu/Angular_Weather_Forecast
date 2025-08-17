@@ -76,8 +76,21 @@ hr {
     margin-bottom: 17px;
 }
 
+/* Tablet view */
 @media (max-width: 996px) {
+    /* Styling main container */
     .container {
         flex-direction: row;
+        justify-content: space-between;
+    }
+
+    /* Styling weather icon */
+    .weatherIcon {
+        margin-top: unset;
+    }
+
+    /* Styling container containing weather information */
+    .weatherInformationContainer {
+        width: 440px;
     }
 }

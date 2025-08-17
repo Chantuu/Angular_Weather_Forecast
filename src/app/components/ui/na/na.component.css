@@ -22,3 +22,11 @@ img {
     max-height: 230px;
     max-width: 260px;
 }
+
+/* Tablet view */
+@media (max-width: 996px) {
+    /* Styling NA icon */
+    img {
+        margin-top: 8%;
+    }
+}

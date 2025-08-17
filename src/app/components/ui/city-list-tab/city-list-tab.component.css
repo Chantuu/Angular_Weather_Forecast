@@ -14,3 +14,12 @@
     /* Making container element take maximum width */
     flex: auto;
 }
+
+/* Tablet view */
+@media (max-width: 996px) {
+    /* Styling host element */
+    :host {
+        margin-top: 20px;
+        gap: 15px;
+    }
+}

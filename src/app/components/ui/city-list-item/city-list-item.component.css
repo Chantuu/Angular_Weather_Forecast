@@ -92,3 +92,42 @@ p.listItemSelected {
 .buttonIcon:active {
     background-color: var(--delete-color-active);
 }
+
+/* Tablet view */
+@media (max-width: 996px) {
+    /* Removing unnecessary icons */
+    .buttonIcon:hover, .buttonIcon:active {
+        background-color: unset;
+    }
+
+    /* Styling component text */
+    :host p {
+        font-size: 25px;
+        max-width: 348px;
+    }
+
+    /* Styling button */
+    button {
+        padding: 5px 33px;
+        border-radius: 6px;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 2px;
+
+        background-color: var(--delete-color-hover);
+        transition: background-color 0.2s ease-in-out;
+    }
+
+    /* Styling button text */
+    button p {
+        display: block;
+        font-size: 17px;
+    }
+
+    /* When clicking delete button */
+    button:active {
+        background-color: var(--delete-color-active);
+    }
+}

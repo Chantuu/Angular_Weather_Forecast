@@ -1,4 +1,4 @@
-/* Resizing Sidebar Container using Flexbox */
+/* Styling host element */
 :host {
     flex: 1 1 473px;
 
@@ -28,8 +28,32 @@
 
 /* Styling Sidebar Button Container */
 .buttonContainer {
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
 
     margin-top: 100px;
+}
+
+/* Tablet View */
+@media (max-width: 996px) {
+    /* Styling host element */
+    :host {
+        max-height: 380px;
+        padding: 20px 24px 37px 24px;
+    }
+
+    /* Styling Sidebar Button Container */
+    .buttonContainer {
+        /* Positioning sidebar button container as bottom button container fixed to the viewport*/
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        margin-top: 0;
+        box-sizing: border-box;
+
+        width: 100vw;
+        padding: 15px 180px 21px 180px;
+        background-color: var(--outer-black-main);
+    }
 }

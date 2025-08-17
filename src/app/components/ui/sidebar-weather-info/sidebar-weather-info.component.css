@@ -26,3 +26,15 @@ span {
     color: var(--columbia-blue-main);
 }
 
+/* Tablet view */
+@media (max-width: 996px) {
+    .container {
+        gap: 21px;
+    }
+
+    img {
+        width: 30px;
+        height: 23px;
+    }
+}
+

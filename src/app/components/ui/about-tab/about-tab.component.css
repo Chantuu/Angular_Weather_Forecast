@@ -18,3 +18,12 @@ p {
     font-weight: 400;
     line-height: 163.2%;
 }
+
+/* Tablet View */
+@media (max-width: 996px) {
+    /* Styling Header */
+    h1 {
+        margin-top: 21px;
+        margin-bottom: 24px;
+    }
+}
