@@ -12,6 +12,11 @@ button {
     background: none;
 }
 
+/* Hiding button text in pc view */
+button p {
+    display: none;
+}
+
 /* Setting cursor style */
 p, p.listItemSelected, .buttonIcon {
     cursor: pointer;
