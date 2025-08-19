@@ -94,3 +94,43 @@ hr {
         width: 440px;
     }
 }
+
+/* Mobile view */
+@media (max-width: 450px) {
+    /* Styling container of the weather information */
+    .weatherInformationContainer {
+        width: 100%;
+    }
+
+    /* Styling temperature text */
+    .sidebarTemperature {
+        font-size: 40px;
+        font-weight: 600;
+        line-height: 52px;
+    }
+
+    /* Styling date text */
+    .sidebarDate {
+        font-size: 25px;
+        font-weight: 300;
+        line-height: 33px;
+    }
+
+    /* Styling Weather Icon */
+    .weatherIcon {
+        padding-top: 4%;
+
+        width: 36%;
+        height: 118px;
+    }
+
+    /* Styling main container */
+    .container {
+        flex-direction: column;
+    }
+
+    /* Styling Horizontal Ruler */
+    hr {
+        margin: 4% 0;
+    }
+}

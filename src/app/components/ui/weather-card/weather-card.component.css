@@ -41,3 +41,11 @@ p {
     line-height: 163.2%;
     color: var(--outer-black-main);
 }
+
+/* Mobile view */
+@media (max-width: 450px) {
+    /* Styling container */
+    .container {
+        width: 156px;
+    }
+}

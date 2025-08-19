@@ -70,3 +70,16 @@ p, span {
         text-wrap: wrap;
     }
 }
+
+/* Mobile view */
+@media (max-width: 450px) {
+    /* Styling host element */
+    :host {
+        max-width: 156px;
+    }
+
+    /* Styling container */
+    .container {
+        padding: 15px 7px 22px;
+    }
+}

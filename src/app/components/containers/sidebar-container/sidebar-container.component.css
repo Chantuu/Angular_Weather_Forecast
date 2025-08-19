@@ -47,7 +47,7 @@
     .buttonContainer {
         /* Positioning sidebar button container as bottom button container fixed to the viewport*/
         position: fixed;
-        bottom: 0;
+        bottom: -1px;
         left: 0;
         z-index: 1;
 
@@ -57,5 +57,19 @@
         width: 100vw;
         padding: 15px 180px 21px 180px;
         background-color: var(--outer-black-main);
+    }
+}
+
+/* Mobile view */
+@media (max-width: 450px) {
+    /* Styling host element */
+    :host {
+        padding: 10px 16px 31px;
+        flex: 1 1 290px;
+    }
+
+    /* Styling Sidebar Button Container */
+    .buttonContainer {
+        padding: 15px 16px 21px;
     }
 }

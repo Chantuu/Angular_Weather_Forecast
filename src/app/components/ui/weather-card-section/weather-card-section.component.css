@@ -42,3 +42,16 @@ h2 {
         gap: 24px;
     }
 }
+
+/* Mobile view */
+@media (max-width: 450px) {
+    /* Styling host element */
+    :host {
+        gap: 15px;
+    }
+
+    /* Styling container containing weather cards */
+    .contentScrollableContainer {
+        gap: 30px;
+    }
+}

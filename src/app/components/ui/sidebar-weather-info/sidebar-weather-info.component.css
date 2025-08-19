@@ -38,3 +38,22 @@ span {
     }
 }
 
+/* Mobile view */
+@media (max-width: 450px) {
+    /* Styling Container */
+    .container {
+        gap: 11px
+    }
+
+    /* Styling Icon */
+    img {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Styling Text */
+    span {
+        font-size: 14px;
+    }
+}
+

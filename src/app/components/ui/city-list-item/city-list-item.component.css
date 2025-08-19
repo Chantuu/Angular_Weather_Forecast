@@ -131,3 +131,33 @@ p.listItemSelected {
         background-color: var(--delete-color-active);
     }
 }
+
+/* Mobile view */
+@media (max-width: 450px) {
+    /* Hiding button text */
+    button p {
+        display: none;
+    }
+
+    /* Styling button icon */
+    .buttonIcon {
+        min-width: 24px;
+
+        /* Align button icon in center */
+        margin-left: 2px;
+    }
+
+    /* Styling element text */
+    :host p {
+        font-size: 20px;
+    }
+
+    /* Styling button */
+    button {
+        max-width: 70px;
+        max-height: 31px;
+
+        /* Properly align button icon */
+        justify-content: center;
+    }
+}

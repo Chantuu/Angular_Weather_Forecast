@@ -25,3 +25,11 @@ h2 {
     overflow: auto;
     white-space: nowrap;
 }
+
+/* Mobile view */
+@media (max-width: 450px) {
+    /* Aligning highlight cards inside the container */
+    .contentContainer {
+        gap: 30px;
+    }
+}
