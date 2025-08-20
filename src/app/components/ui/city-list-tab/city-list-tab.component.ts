@@ -2,6 +2,7 @@ import {Component, computed} from '@angular/core';
 import {CityListItemComponent} from "../city-list-item/city-list-item.component";
 import {WeatherService} from "../../../services/weather.service";
 import {CityData} from "../../../utilities/types/city-data.type";
+import {FavoriteCitiesService} from "../../../services/favorite-cities.service";
 
 @Component({
   selector: 'app-city-list-tab',
@@ -12,7 +13,8 @@ import {CityData} from "../../../utilities/types/city-data.type";
   styleUrl: './city-list-tab.component.css'
 })
 export class CityListTabComponent {
-  constructor(private readonly weatherService: WeatherService) {
+  constructor(private readonly weatherService: WeatherService,
+              private readonly favoriteCitiesService: FavoriteCitiesService) {
   }
 
   /**
@@ -25,7 +27,7 @@ export class CityListTabComponent {
    * This computed signal contains list containing saved favorite cities as CityData objects, which are displayed
    * as list items in the template.
    */
-  favoriteCitiesList = computed(() => this.weatherService.getFavoriteCitiesList());
+  favoriteCitiesList = computed(() => this.favoriteCitiesService.getFavoriteCitiesList());
 
   /**
    * This handler method is responsible for deleting desired city from the favorite cities list.
@@ -33,11 +35,11 @@ export class CityListTabComponent {
    * @param currentCity - Desired city to be deleted
    */
   deleteButtonClicked(currentCity: CityData) {
-    this.weatherService.removeCityFromFavoriteCitiesList(currentCity);
+    this.favoriteCitiesService.removeCityFromFavoriteCitiesList(currentCity);
 
     // If deleted city was marked as selected list item, make favorite button inactive
     if (currentCity.id == this.sharedWeatherData()?.city.id) {
-      this.weatherService.setFavoriteButtonState(false);
+      this.favoriteCitiesService.setFavoriteButtonState(false);
     }
   }
 
@@ -50,11 +52,11 @@ export class CityListTabComponent {
     await this.weatherService.getWeatherDataFromList(currentCity);
 
     // Getting current state of the favorite button
-    const currentFavoriteButtonState = this.weatherService.getFavoriteButtonState()();
+    const currentFavoriteButtonState = this.favoriteCitiesService.getFavoriteButtonState()();
 
     // If previous city was not in favorites list and list item was clicked, make favorite button active
     if (!currentFavoriteButtonState) {
-      this.weatherService.setFavoriteButtonState(true);
+      this.favoriteCitiesService.setFavoriteButtonState(true);
     }
   }
 }

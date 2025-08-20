@@ -8,6 +8,7 @@ import {WeatherService} from "../../../services/weather.service";
 import {WeatherData} from "../../../utilities/types/weather-data.type";
 import {NaComponent} from "../../ui/na/na.component";
 import {CityListTabComponent} from "../../ui/city-list-tab/city-list-tab.component";
+import {FavoriteCitiesService} from "../../../services/favorite-cities.service";
 
 @Component({
   selector: 'app-sidebar-container',
@@ -16,10 +17,8 @@ import {CityListTabComponent} from "../../ui/city-list-tab/city-list-tab.compone
   styleUrl: './sidebar-container.component.css'
 })
 export class SidebarContainerComponent {
-  /**
-   * This service is responsible for managing and distributing Open-Meteo weather data to the components.
-   */
-  readonly weatherService = inject(WeatherService);
+  constructor(private readonly weatherService: WeatherService,
+              private readonly favoriteCitiesService: FavoriteCitiesService) {}
 
   /**
    * This enum property was declared to be used inside component template to properly manage sidebar button components.
@@ -66,12 +65,12 @@ export class SidebarContainerComponent {
         // If city data is defined
         if (currentCity) {
           // If this city is already added to the list, make button active
-          if (this.weatherService.cityExistsInFavoriteCitiesList(currentCity)) {
-            this.weatherService.setFavoriteButtonState(true);
+          if (this.favoriteCitiesService.cityExistsInFavoriteCitiesList(currentCity)) {
+            this.favoriteCitiesService.setFavoriteButtonState(true);
           }
           // If this city is not already added to the list, do not make button active
           else {
-            this.weatherService.setFavoriteButtonState(false);
+            this.favoriteCitiesService.setFavoriteButtonState(false);
           }
         }
 

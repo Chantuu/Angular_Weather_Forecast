@@ -6,6 +6,7 @@ import {
 } from "../../ui/header-buttons/header-favorite-button/header-favorite-button.component";
 import {TemperatureFormatService} from "../../../services/temperature-format.service";
 import {WeatherService} from "../../../services/weather.service";
+import {FavoriteCitiesService} from "../../../services/favorite-cities.service";
 
 @Component({
   selector: 'app-header-button-container',
@@ -18,7 +19,8 @@ import {WeatherService} from "../../../services/weather.service";
 })
 export class HeaderButtonContainerComponent {
   constructor(private readonly temperatureFormatService: TemperatureFormatService,
-              private readonly weatherService: WeatherService) {}
+              private readonly weatherService: WeatherService,
+              private readonly favoriteCitiesService: FavoriteCitiesService) {}
 
   /**
    * This property contains HeaderToggleButtonType type, which is necessary to use it inside the component's template.
@@ -41,7 +43,7 @@ export class HeaderButtonContainerComponent {
    * This computed signal is used to make favorite button active conditionally from the service.
    */
   favoriteButtonActive =
-      computed(() => this.weatherService.getFavoriteButtonState()());
+      computed(() => this.favoriteCitiesService.getFavoriteButtonState()());
 
   /**
    * This function is used to set currently clicked toggle button as an active button, which will be used to set
@@ -64,14 +66,14 @@ export class HeaderButtonContainerComponent {
     // If current city data is available
     if (currentCity) {
       // If current city is not added to the favorite cities list, add it
-      if (!this.weatherService.cityExistsInFavoriteCitiesList(currentCity)) {
-        this.weatherService.addCityToFavoriteCitiesList(currentCity);
-        this.weatherService.setFavoriteButtonState(true);
+      if (!this.favoriteCitiesService.cityExistsInFavoriteCitiesList(currentCity)) {
+        this.favoriteCitiesService.addCityToFavoriteCitiesList(currentCity);
+        this.favoriteCitiesService.setFavoriteButtonState(true);
       }
       // If current city is added to the favorite cities list, remove it
       else {
-        this.weatherService.removeCityFromFavoriteCitiesList(currentCity);
-        this.weatherService.setFavoriteButtonState(false);
+        this.favoriteCitiesService.removeCityFromFavoriteCitiesList(currentCity);
+        this.favoriteCitiesService.setFavoriteButtonState(false);
       }
     }
   }
