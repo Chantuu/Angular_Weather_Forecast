@@ -1,4 +1,4 @@
-import {Component, inject, signal} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {SidebarButtonComponent} from "../../ui/sidebar-button/sidebar-button.component";
 import {SidebarButtonType} from "../../../utilities/enums/sidebar-button.enum";
 import {WeatherTabComponent} from "../../ui/weather-tab/weather-tab.component";
@@ -10,9 +10,17 @@ import {NaComponent} from "../../ui/na/na.component";
 import {CityListTabComponent} from "../../ui/city-list-tab/city-list-tab.component";
 import {FavoriteCitiesService} from "../../../services/favorite-cities.service";
 
+/**
+ * This component is sidebar container, which manages and aligns sidebar container components.
+ */
 @Component({
   selector: 'app-sidebar-container',
-  imports: [SidebarButtonComponent, WeatherTabComponent, AboutTabComponent, CitySearchBarComponent, NaComponent, CityListTabComponent],
+  imports: [SidebarButtonComponent,
+    WeatherTabComponent,
+    AboutTabComponent,
+    CitySearchBarComponent,
+    NaComponent,
+    CityListTabComponent],
   templateUrl: './sidebar-container.component.html',
   styleUrl: './sidebar-container.component.css'
 })
@@ -20,49 +28,52 @@ export class SidebarContainerComponent {
   constructor(private readonly weatherService: WeatherService,
               private readonly favoriteCitiesService: FavoriteCitiesService) {}
 
+  // region Component Signals and Declared Types
   /**
-   * This enum property was declared to be used inside component template to properly manage sidebar button components.
+   * This property saves SidebarButtonType enum, which is used inside the component's template.
    */
   readonly SidebarButtonType = SidebarButtonType;
 
 
   /**
-   * This Signal saves which sidebar button was clicked to display corresponding tab in the sidebar.
+   * This Signal saves currently clicked sidebar button to display corresponding sidebar tab.
    */
   currentSidebarButtonPressed = signal<SidebarButtonType>(SidebarButtonType.Weather);
 
   /**
-   * This signal saves object, which contains structured weather data and it is responsible for distributing this
-   * data to the various components.
+   * This signal saves object of WeatherData type, containing structured weather data and used to distribute this data.
    *
    * Note: This signal can be null, which means that no city was selected and null checking is necessary.
    */
   weatherData = signal<WeatherData | null>(null);
+  // endregion
 
 
+  // region Component Methods
   /**
-   * This function is responsible for updating currentSidebarButtonPressed signal which allows to switch between
-   * different tabs in the sidebar.
+   * This function saves currently pressed sidebar button in the currentSidebarButtonPressed signal, used for switching
+   * to the corresponding sidebar tab.
    *
-   * @param currentButtonPressed - Parameter containing which sidebar button was clicked
+   * @param currentButtonPressed - Currently clicked sidebar button type
    */
   setActiveSidebarButton(currentButtonPressed: SidebarButtonType) {
     this.currentSidebarButtonPressed.set(currentButtonPressed);
   }
 
   /**
-   * This method is used to get and save current weather data for corresponding using WeatherService and
-   * provided city name. If WeatherService fails to get data or incorrect city name was entered, alert
-   * will be shown.
+   * This method is used to handle incoming event from CitySearchBar Component. It tries to retrieve and save
+   * WeatherData object in the WeatherService to distribute this data. It additionally manages favorite button's state.
+   * This method has error exception built in.
    *
    * @param {string} CityName - String of the desired city name.
    */
   async onFormSubmit(CityName: string) {
       try {
+        // Getting weather data of the desired city
         const resultData = await this.weatherService.getWeatherData(CityName);
         const currentCity = resultData.city;
 
-        // If city data is defined
+        // If weather data for the desired city is found
         if (currentCity) {
           // If this city is already added to the list, make button active
           if (this.favoriteCitiesService.cityExistsInFavoriteCitiesList(currentCity)) {
@@ -76,8 +87,10 @@ export class SidebarContainerComponent {
 
         this.weatherData.set(resultData);
       }
+      // Handle axios errors
       catch (error) {
         alert(error);
       }
   }
+  // endregion
 }

@@ -1,6 +1,6 @@
-/* Styling container of the weather card content */
+/* Styling main container */
 .container {
-    /* Aligning content inside the container */
+    /* Aligning elements inside container */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -8,6 +8,7 @@
 
     background-color: var(--columbia-blue-main);
 
+    /* Scaling main container */
     max-width: 156px;
     max-height: 170px;
 
@@ -19,9 +20,11 @@
 
 /* Styling weather icon */
 .weatherIcon {
+    /* scaling weather icon */
     height: 87px;
     width: 87px;
 
+    /* Setting styles for input icon */
     mask-repeat: no-repeat;
     mask-position: center;
     mask-size: cover;
@@ -33,19 +36,22 @@
     -webkit-mask-size: cover;
 }
 
-/* Styling text inside the weather card container */
+/* Styling component's paragraph */
 p {
+    /* Setting font styles */
     font-family: 'Geist Mono', sans-serif;
     font-weight: 400;
     font-size: 17px;
     line-height: 163.2%;
+
     color: var(--outer-black-main);
 }
 
 /* Mobile view */
 @media (max-width: 450px) {
-    /* Styling container */
+    /* Styling main container */
     .container {
+        /* Scaling main container */
         width: 156px;
     }
 }

@@ -1,11 +1,11 @@
-/* Styling main container */
+/* Styling main container to align elements */
 .container {
     display: flex;
     flex-direction: column;
     gap: 25px;
 }
 
-/* Styling section header text */
+/* Styling section header h2 to set font styles */
 h2 {
     font-family: 'Geist', sans-serif;
     font-weight: 500;
@@ -14,8 +14,9 @@ h2 {
     letter-spacing: 2px;
 }
 
-/* Aligning highlight cards inside the container */
+/* Styling contentContainer */
 .contentContainer {
+    /* Aligning elements inside container */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -28,7 +29,7 @@ h2 {
 
 /* Mobile view */
 @media (max-width: 450px) {
-    /* Aligning highlight cards inside the container */
+    /* Styling contentContainer to align elements */
     .contentContainer {
         gap: 30px;
     }

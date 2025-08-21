@@ -2,6 +2,9 @@ import {Component, input, output} from '@angular/core';
 import {NgStyle} from "@angular/common";
 import {SidebarButtonType} from "../../../utilities/enums/sidebar-button.enum";
 
+/**
+ * This is sidebar button component, which is configurable to bind with corresponding sidebar tab.
+ */
 @Component({
   selector: 'button[app-sidebar-button]',
   imports: [
@@ -14,8 +17,10 @@ import {SidebarButtonType} from "../../../utilities/enums/sidebar-button.enum";
   }
 })
 export class SidebarButtonComponent {
+  // region Component Inputs
   /**
-   * This required input awaits desired icon name, which will be displayed inside button icon.
+   * This required input awaits desired icon name, which is displayed inside button icon.
+   *
    * Note: that this icon must be located inside src/assets/button_Icons folder to properly
    * use and display this icon.
    *
@@ -26,10 +31,7 @@ export class SidebarButtonComponent {
   iconName = input.required<string>();
 
   /**
-   * This required input is responsible for changing button styling, when its corresponding tab is open
-   * inside sidebar.
-   *
-   * Note: This property must be managed by parent component.
+   * This required input awaits boolean value, where if corresponding tab is open, this component is selected.
    *
    * Usage example:
    * @example
@@ -38,27 +40,31 @@ export class SidebarButtonComponent {
   buttonTabActive = input.required<boolean>();
 
   /**
-   * This required input is necessary to programmatically identify individual sidebar button,
-   * which is necessary to display correct sidebar tab accordingly.
-   *
-   * Note: This property must be managed by parent component.
+   * This required input awaits SidebarButtonType Enum, programmatically differentiating current button from other
+   * sidebar buttons.
    *
    * Usage example:
    * @example
    * <button app-sidebar-button [buttonType]="SidebarButtonType.About">Some Text<button />
    */
   buttonType = input.required<SidebarButtonType>();
+  // endregion
 
+
+  // region Component Outputs
   /**
-   * This event returns SidebarButtonType enum, which is used to identify, which sidebar button was clicked and
-   * display corresponding tab in sidebar
+   * This event emits SidebarButtonType Enum, used to identify which sidebar button was clicked and show corresponding
+   * sidebar tab.
    */
   onClick = output<SidebarButtonType>();
+  // endregion
 
+
+  // region Component Methods
   /**
-   * This function is responsible for generating and returning correct mask image url, where input icon is
-   * dynamically injected and allows to display and manipulate desired icon. This is applicable when using
-   * mask-image rule.
+   * This function generates and returns correct mask image url, used to manipulate svg icon using css
+   *
+   * @returns string - Generated url string of the input icon
    */
   getMaskImage() {
     const url = `/assets/button_Icons/${this.iconName()}.svg`;
@@ -66,10 +72,11 @@ export class SidebarButtonComponent {
   }
 
   /**
-   * This method is responsible for emitting SidebarButtonType enum value, which is used by parent component
-   * to identify programmatically, which sidebar button was clicked.
+   * This handler method emits saved SidebarButtonType Enum value, used by parent component to programmatically identify
+   * clicked sidebar button and display corresponding sidebar tab.
    */
   buttonClicked() {
     this.onClick.emit(this.buttonType());
   }
+  // endregion
 }

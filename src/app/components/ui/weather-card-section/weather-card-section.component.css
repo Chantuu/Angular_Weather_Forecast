@@ -1,43 +1,51 @@
+/* Styling app-weather-card-section element to align elements */
 :host {
     display: flex;
     flex-direction: column;
     gap: 25px;
 }
 
+/* Styling component's h2 title */
 h2 {
+    /* Setting font styles */
     font-family: 'Geist', sans-serif;
     font-weight: 500;
     font-size: 36px;
     line-height: 47px;
     letter-spacing: 2px;
 
+    /* Scaling h2 */
     flex: 0 1 414px;
 }
 
+/* Styling top container of the component to align elements */
 .headerContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
+/* Styling bottom container of the component */
 .contentScrollableContainer {
+    /* Aligning elements inside container */
     display: flex;
     flex-direction: row;
     gap: 15px;
 
+    /* Making container horizontally scrollable */
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
 }
 
-/*to hide the scrollbars*/
+/* Hiding scroll bars */
 ::-webkit-scrollbar {
     display: none;
 }
 
 /* Tablet view */
 @media (max-width: 1024px) {
-    /* Styling host element */
+    /* Styling app-weather-card-section element to align elements */
     :host {
         gap: 24px;
     }
@@ -45,12 +53,12 @@ h2 {
 
 /* Mobile view */
 @media (max-width: 450px) {
-    /* Styling host element */
+    /* Styling app-weather-card-section element to align elements */
     :host {
         gap: 15px;
     }
 
-    /* Styling container containing weather cards */
+    /* Styling bottom container of the component to align items */
     .contentScrollableContainer {
         gap: 30px;
     }

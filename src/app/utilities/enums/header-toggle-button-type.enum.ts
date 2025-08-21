@@ -1,6 +1,5 @@
 /**
- * This enum is used to programmatically differentiate toggle buttons, which are used to display temperature between
- * Celsius and Fahrenheit.
+ * This enum programmatically differentiates toggle buttons, which are used to display desired temperature format.
  */
 export enum HeaderToggleButtonType {
     celsius = 0,

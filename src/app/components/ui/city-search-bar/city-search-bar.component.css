@@ -1,21 +1,22 @@
-/* Allows Host Element to Take Full Width of The Parent Flex Container */
+/* Styling app-city-search-bar element to scale properly */
 :host {
     align-self: stretch;
 }
 
-/* Aligning Elements Inside form Element Horizontally */
+/* Styling form to align elements inside */
 form {
     display: flex;
     flex-direction: row;
 }
 
-/* Adding Space Between img Icon and Input Element */
+/* Adding space between img icon and input element */
 img {
     margin-right: 7px;
 }
 
-/* Styling Text Input */
+/* Styling text input and placeholder text */
 #citySearchInput, #citySearchInput::placeholder {
+    /* Setting font styles */
     font-size: 17px;
     font-weight: 400;
     line-height: 163.2%;
@@ -23,63 +24,71 @@ img {
     color: var(--columbia-blue-main);
 }
 
+/* Styling text input */
 #citySearchInput {
+    /* Scaling text input */
     flex: 1 0 auto;
+    padding: 2px 0 0 0;
 
+    /* Removing default styling */
     background: none;
     border: none;
-
-    padding: 2px 0 0 0;
 }
 
+/* Removing default focus from text input */
 #citySearchInput:focus-visible {
     outline: none;
 }
 
-/* Styling Form Button */
+/* Styling form button */
 button {
+    /* Scaling form button */
     margin-left: 10px;
     padding: 7px 13px;
 
+    /* Removing default styling */
     border: none;
     border-radius: 5px;
 
+    /* Setting font styles */
     font-size: 17px;
     font-weight: 400;
 
     background-color: var(--picton-blue-main);
     color: var(--outer-black-main);
-
     transition: background-color 0.2s ease-in-out;
 }
 
+/* When form button is hovered */
 button:hover {
     background-color: var(--picton-blue-hover);
 }
 
+/* When form button is clicked */
 button:active {
     background-color: var(--picton-blue-active);
 }
 
 /* Mobile view */
 @media (max-width: 450px) {
-    /* Styling form element */
+    /* Styling form element to align items */
     form {
         align-items: center;
     }
 
     /* Styling search icon */
     img {
+        /* Scaling search icon */
         width: 25px;
         height: 25px;
     }
 
-    /* Styling Text Input */
+    /* Styling text input placeholder text */
     #citySearchInput, #citySearchInput::placeholder {
         font-size: 14px;
     }
 
-    /* Styling Form Button */
+    /* Styling form button */
     button {
         font-size: 14px;
     }

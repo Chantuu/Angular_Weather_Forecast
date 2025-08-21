@@ -1,6 +1,5 @@
 /**
- * This enum is responsible for telling parent component, which sidebar button
- * was clicked.
+ * This enum is used to programmatically differentiate sidebar button components.
  */
 export enum SidebarButtonType {
     Weather = 0,

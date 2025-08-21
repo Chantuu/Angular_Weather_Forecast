@@ -1,24 +1,26 @@
-/* Take Full Width in Parent FlexBox Container  */
+/* Styling app-sidebar-weather-info element to scale properly  */
 :host {
     align-self: stretch;
 }
 
-/* Styling Container */
+/* Styling container */
 .container {
+    /* Aligning elements inside container */
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 16px;
 }
 
-/* Styling Icon */
+/* Scaling icon */
 img {
     width: 37px;
     height: 30px;
 }
 
-/* Styling Text */
+/* Styling span text */
 span {
+    /* Setting font styles */
     font-size: 19px;
     font-weight: 600;
     line-height: 163.2%;
@@ -28,10 +30,12 @@ span {
 
 /* Tablet view */
 @media (max-width: 1024px) {
+    /* Styling container */
     .container {
         gap: 21px;
     }
 
+    /* Scaling icon */
     img {
         width: 30px;
         height: 23px;
@@ -40,18 +44,18 @@ span {
 
 /* Mobile view */
 @media (max-width: 450px) {
-    /* Styling Container */
+    /* Styling container */
     .container {
         gap: 11px
     }
 
-    /* Styling Icon */
+    /* Scaling icon */
     img {
         width: 20px;
         height: 20px;
     }
 
-    /* Styling Text */
+    /* Styling span text */
     span {
         font-size: 14px;
     }

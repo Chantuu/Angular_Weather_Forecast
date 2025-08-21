@@ -1,4 +1,4 @@
-/* This rule allows host element to dynamically get space in parent flex container */
+/* Styling app-sunrise-sunset-card element to scale */
 :host {
     flex: 1 0 186px;
     max-width: 186px;
@@ -6,12 +6,14 @@
 
 /* Styling card container */
 .container {
+    /* Aligning elements inside container */
     display: flex;
     flex-direction: column;
     gap: 16px;
 
     background-color: var(--columbia-blue-main);
 
+    /* Scaling container */
     height: 170px;
 
     /* Setting border-box to avoid unnecessary container size growth */
@@ -22,6 +24,7 @@
 
 /* Styling container holding sunrise/sunset containers */
 .dataContainer {
+    /* Aligning elements inside container */
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -29,6 +32,7 @@
 
 /* Styling sunrise/sunset container */
 .timeContainer {
+    /* Aligning elements inside container */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -37,35 +41,39 @@
 
 /* Styling card text */
 p, span {
+    /* Setting font styles */
     font-family: 'Geist Mono', sans-serif;
     font-weight: 400;
     font-size: 17px;
     line-height: 163.2%;
+
     color: var(--outer-black-main);
 }
 
 /* Tablet view */
 @media (max-width: 1024px) {
-    /* Styling host element */
+    /* Styling app-sunrise-sunset-card element to scale */
     :host {
         flex: 1 0 162px;
         max-width: 162px;
     }
 
-    /* Styling container */
+    /* Styling card container */
     .container {
+        /* Scaling container */
         height: 150px;
         padding: 15px 10px 22px 10px;
 
+        /* Aligning elements inside container */
         gap: 3px;
     }
 
-    /* Styling container holding sunrise/sunset containers */
+    /* Styling container holding sunrise/sunset containers to align elements */
     .dataContainer {
         gap: 1px;
     }
 
-    /* Styling card title */
+    /* Styling card title to wrap text when shrinking */
     p {
         text-wrap: wrap;
     }
@@ -73,12 +81,12 @@ p, span {
 
 /* Mobile view */
 @media (max-width: 450px) {
-    /* Styling host element */
+    /* Styling app-sunrise-sunset-card element to scale */
     :host {
         max-width: 156px;
     }
 
-    /* Styling container */
+    /* Styling card container to scale */
     .container {
         padding: 15px 7px 22px;
     }

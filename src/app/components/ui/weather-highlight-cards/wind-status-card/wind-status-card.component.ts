@@ -1,5 +1,8 @@
 import {Component, input} from '@angular/core';
 
+/**
+ * This is wind status card component, which displays current wind speed.
+ */
 @Component({
   selector: 'app-wind-status-card',
   imports: [],
@@ -8,7 +11,7 @@ import {Component, input} from '@angular/core';
 })
 export class WindStatusCardComponent {
   /**
-   * This required input awaits wind speed value of number type to be displayed inside component.
+   * This required input awaits number type, which represents current wind speed.
    *
    * Usage example:
    * @example

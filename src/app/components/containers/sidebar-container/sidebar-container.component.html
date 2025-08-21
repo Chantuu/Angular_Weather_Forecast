@@ -1,15 +1,18 @@
 <div class="container">
+    <!-- If current tab is weather tab or favorite cities tab, display City Search Bar Component -->
     @if (currentSidebarButtonPressed() === SidebarButtonType.Weather ||
     currentSidebarButtonPressed() === SidebarButtonType.Cities) {
         <app-city-search-bar (onSubmit)="onFormSubmit($event)"/>
     }
 
+    <!-- This conditional displays sidebar tabs based on the currentSidebarButtonPressed signal value -->
     @if (currentSidebarButtonPressed() === SidebarButtonType.Weather) {
-        <!-- WeatherData object was assigned a variable in here to reduce weatherData() signal calls and
-        give necessary data to WeatherTabComponent easily -->
+        <!-- WeatherData object was assigned a variable in here to reduce sharedWeatherData() signal calls and
+            give necessary data to WeatherTabComponent as a variable while avoiding possible null error -->
         @let weatherDataValue = weatherData();
 
-        <!-- If WeatherService successfully retrieved weather data from Open-Meteo API for corresponding city -->
+        <!-- If WeatherService successfully retrieved weather data from Open-Meteo API for corresponding city.
+             Otherwise, display NA component -->
         @if (weatherDataValue) {
             <app-weather-tab
                     [weatherTemperature]="weatherDataValue.daily[0].temperatureMax"

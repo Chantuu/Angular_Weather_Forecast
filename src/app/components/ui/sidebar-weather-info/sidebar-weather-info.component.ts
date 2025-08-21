@@ -1,5 +1,8 @@
 import {Component, computed, input} from '@angular/core';
 
+/**
+ * This is sidebar weather information component, which is configurable to display desired weather data.
+ */
 @Component({
   selector: 'app-sidebar-weather-info',
   imports: [],
@@ -7,9 +10,12 @@ import {Component, computed, input} from '@angular/core';
   styleUrl: './sidebar-weather-info.component.css'
 })
 export class SidebarWeatherInfoComponent {
+  // region Component Inputs
   /**
-   * This required input awaits name of the svg icon, which must located in the src/app/assets/sidebar_Weather_Info_Icons
-   * folder and file extension is not required.
+   * This required input awaits desired icon name, which in the component.
+   *
+   * Note: that this icon must be located inside src/assets/button_Icons folder to properly
+   * use and display this icon.
    *
    * Usage Example:
    * @example
@@ -18,8 +24,7 @@ export class SidebarWeatherInfoComponent {
   iconName = input.required<string>();
 
   /**
-   * This required input awaits alt text of the icon, which used for img element and intends to improve accessibility
-   * of the web application.
+   * This required input awaits desired description of the icon, used for img element and accessibility.
    *
    * Usage Example:
    * @example
@@ -28,8 +33,8 @@ export class SidebarWeatherInfoComponent {
   iconAltText = input.required<string>();
 
   /**
-   * This computed signal automatically computes and returns full path of the input icon to dynamically add desired
-   * icons in the component.
+   * This computed signal returns full path of the input icon.
    */
   getIconPath = computed<string>(() => `assets/sidebar_Weather_Info_Icons/${this.iconName()}.svg`);
+  // endregion
 }

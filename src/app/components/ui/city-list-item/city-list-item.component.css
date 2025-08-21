@@ -1,4 +1,4 @@
-/* Styling host element to align items */
+/* Styling app-city-list-item to align items */
 :host {
     display: flex;
     flex-direction: row;
@@ -6,13 +6,13 @@
     align-items: center;
 }
 
-/* Removing styling from button element */
+/* Removing default styling from button element */
 button {
     border: none;
     background: none;
 }
 
-/* Hiding button text in pc view */
+/* Hiding button text in PC view */
 button p {
     display: none;
 }
@@ -22,10 +22,12 @@ p, p.listItemSelected, .buttonIcon {
     cursor: pointer;
 }
 
-/* Styling component text */
+/* Styling component's paragraph */
 p {
+    /* Setting maximum width to prevent overflow */
     max-width: 285px;
 
+    /* Setting font styles */
     font-family: "Geist Mono", sans-serif;
     font-weight: 400;
     font-size: 20px;
@@ -34,43 +36,46 @@ p {
     color: var(--columbia-blue-main);
     transition: color 0.2s ease-in-out;
 
+    /* Removing ability to select text for visual appeal */
     user-select: none;
     -webkit-user-select: none;
 }
 
-/* When hovering list item text */
+/* When hovering paragraph */
 :host p:hover {
     color: var(--columbia-blue-hover);
 }
 
-/* When clicking list item text */
+/* When clicking paragraph */
 :host p:active {
     color: var(--columbia-blue-active);
 }
 
-/* Styling active list item */
+/* Styling paragraph, when component is selected */
 p.listItemSelected {
     color: var(--picton-blue-main);
 }
 
-/* When hovering active list item text */
+/* When hovering paragraph and component is selected */
 :host p.listItemSelected:hover {
     color: var(--picton-blue-hover);
 }
 
-/* When clicking active list item text */
+/* When clicking paragraph and component is selected */
 :host p.listItemSelected:active {
     color: var(--picton-blue-active);
 }
 
 /* Styling button icon */
 .buttonIcon {
+    /* Scaling button icon */
     width: 28px;
     height: 28px;
 
     background-color: var(--columbia-blue-main);
     transition: background-color 0.2s ease-in-out;
 
+    /* Setting icon svg for div */
     mask-repeat: no-repeat;
     mask-position: center;
     mask-size: contain;
@@ -95,22 +100,24 @@ p.listItemSelected {
 
 /* Tablet view */
 @media (max-width: 1024px) {
-    /* Removing unnecessary icons */
+    /* Removing icon */
     .buttonIcon:hover, .buttonIcon:active {
         background-color: unset;
     }
 
-    /* Styling component text */
+    /* Styling component's paragraph */
     :host p {
         font-size: 25px;
         max-width: 348px;
     }
 
-    /* Styling button */
+    /* Styling component's button */
     button {
+        /* Scaling button */
         padding: 5px 33px;
         border-radius: 6px;
 
+        /* Aligning content inside button */
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -126,7 +133,7 @@ p.listItemSelected {
         font-size: 17px;
     }
 
-    /* When clicking delete button */
+    /* When clicking button */
     button:active {
         background-color: var(--delete-color-active);
     }
@@ -141,19 +148,21 @@ p.listItemSelected {
 
     /* Styling button icon */
     .buttonIcon {
+        /* Scaling button icon */
         min-width: 24px;
 
         /* Align button icon in center */
         margin-left: 2px;
     }
 
-    /* Styling element text */
+    /* Styling element paragraph */
     :host p {
         font-size: 20px;
     }
 
     /* Styling button */
     button {
+        /* Scaling button */
         max-width: 70px;
         max-height: 31px;
 

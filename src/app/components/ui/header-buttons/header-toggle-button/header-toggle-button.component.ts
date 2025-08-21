@@ -1,6 +1,9 @@
 import {Component, input, output} from '@angular/core';
 import {HeaderToggleButtonType} from "../../../../utilities/enums/header-toggle-button-type.enum";
 
+/**
+ * This component is toggle button, which is configurable to display corresponding temperature format.
+ */
 @Component({
   selector: 'app-header-toggle-button',
   imports: [],
@@ -13,15 +16,14 @@ import {HeaderToggleButtonType} from "../../../../utilities/enums/header-toggle-
   }
 })
 export class HeaderToggleButtonComponent {
+  // region Component Inputs and Declared Types
   /**
-   * This property is used to save HeaderToggleButtonType enum, which is necessary to set toggle button types
-   * programmatically, display corresponding text and set active toggle button in the parent component.
+   * This property saves HeaderToggleButtonType Enum, which is used inside component's property.
    */
   protected readonly HeaderToggleButtonType = HeaderToggleButtonType;
 
   /**
-   * This input determines, in which format will this button display temperature. This input also changes button icon
-   * to the corresponding text.
+   * This input awaits HeaderToggleButtonType Enum, determining in which format to display temperature.
    *
    * Usage example:
    * @example
@@ -30,17 +32,19 @@ export class HeaderToggleButtonComponent {
   buttonType = input.required<HeaderToggleButtonType>();
 
   /**
-   * This input awaits boolean value, which will determine if this button is activated. It is required to change
-   * temperature display format.
+   * This input awaits boolean value, determining if this button is selected.
    *
    * Usage example:
    * @example
    * <app-header-toggle-button [buttonSelected]="false"/>
    */
   buttonSelected = input.required<boolean>();
+  // endregion
 
+
+  //  region Component Outputs
   /**
-   * This event sends out HeaderToggleButtonType value, which programmatically differences toggle buttons and sets
+   * This event emits HeaderToggleButtonType value, which programmatically differences toggle buttons and sets
    * temperature format accordingly.
    *
    * Usage example:
@@ -48,12 +52,16 @@ export class HeaderToggleButtonComponent {
    * <app-header-toggle-button (onClick)="// Handler Method"/>
    */
   onClick = output<HeaderToggleButtonType>();
+  // endregion
 
+
+  // region Component Methods
   /**
-   * This method is used to send current type of the button to the parent component to update temperature format inside
-   * the application.
+   * This method sends currently saved HeaderToggleButtonType value to the parent component, which updates temperature
+   * format.
    */
   buttonClicked() {
     this.onClick.emit(this.buttonType());
   }
+  // endregion
 }

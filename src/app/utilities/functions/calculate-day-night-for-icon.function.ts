@@ -1,6 +1,6 @@
 /**
- * This helper function is used to calculate, if it is night or day based on the current time and return boolean value,
- * where true represents night and false day. Using this, parent function/method will choose corresponding icon.
+ * This helper function calculates, if it is night or day based on the current time and returns boolean value,
+ * where true represents night and false day.
  *
  * @param currentOptionalTime - Optional Date value to calculate day/night based on that value.
  * @return Boolean - Boolean, where true represents night and false day.

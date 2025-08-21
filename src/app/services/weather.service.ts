@@ -6,8 +6,7 @@ import {CityData} from "../utilities/types/city-data.type";
 import {FavoriteCitiesService} from "./favorite-cities.service";
 
 /**
- * This service class is responsible for retrieving and managing Open-Meteo APIs weather data for different components
- * across the application.
+ * This service retrieves and manages weather data from Open-Meteo API service.
  */
 @Injectable({
   providedIn: 'root'
@@ -16,13 +15,13 @@ export class WeatherService {
   constructor(private readonly favoriteCitiesService: FavoriteCitiesService) {}
 
   /**
-   * This private signal is used to save currently selected city weather data, which is necessary for sharing it across
+   * This private signal saves WeatherData object of the currently searched city, which is used for sharing it across
    * different components.
    */
   private _sharedWeatherData = signal<WeatherData | null>(null);
 
   /**
-   * This getter method returns currently saved weather data to the desired component.
+   * This method returns currently saved WeatherData object.
    *
    * @returns WeatherData object or null
    */
@@ -31,7 +30,7 @@ export class WeatherService {
   }
 
   /**
-   * This setter method sets newly requested weather data, which will be shared across different components.
+   * This method sets new WeatherData object.
    *
    * @param weatherData - Newly requested weather data
    */
@@ -40,7 +39,7 @@ export class WeatherService {
   }
 
   /**
-   * This generic private method is used to extract hourly weather data for first day from the Open-Meteo API response.
+   * This generic private method is extracts hourly weather data for first day from the Open-Meteo API response.
    *
    * @param desiredHourlyWeatherDataArray - Array containing desired hourly data from API response.
    */
@@ -51,9 +50,9 @@ export class WeatherService {
   }
 
   /**
-   * This private async method is responsible for converting city name to the geocode using Open-Meteos API.
+   * This private async method is converts city name to the geocode using Open-Meteos API.
    *
-   * @param cityName - Desired city to be converted into geocodes.
+   * @param cityName - Desired city to be converted.
    * @throws Error - throws error if city with that name was not found or there were connection issues with API.
    * @Warning - This method may be contained inside try/catch block, as this method has probability to throw an error.
    */
@@ -87,8 +86,7 @@ export class WeatherService {
   }
 
   /**
-   * This private helper method is responsible for retrieving weather data from the Open-Meteo's API. It awaits
-   * CityData object as a parameter to retrieve corresponding weather data.
+   * This private helper method retrievies weather data from the Open-Meteo's API.
    *
    * @param cityData - CitiData object containing necessary information to retrieve weather data
    * @returns Promise<WeatherData> - Promise containing retrieved weather data
@@ -169,8 +167,7 @@ export class WeatherService {
   }
 
   /**
-   * This async method is responsible for getting weather data using only city name as a parameter. Behind the scenes,
-   * it uses private method to retrieve weather data.
+   * This async method gets weather data using only city name as a parameter.
    *
    * @param cityName - String containing the name of the desired city
    * @returns Promise<WeatherData> - Promise containing corresponding weather data
@@ -183,8 +180,8 @@ export class WeatherService {
   }
 
   /**
-   * This async method is responsible for getting weather data using CityData object of the desired city
-   * name as a parameter. Behind the scenes, it uses private method to retrieve weather data.
+   * This async method is responsible gets weather data using CityData object of the desired city
+   * name as a parameter.
    *
    * @param cityData - CityData object containing necessary information of the desired city
    * @returns Promise<WeatherData> - Promise containing corresponding weather data

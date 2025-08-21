@@ -1,20 +1,22 @@
-/* Styling Host Element as a Container */
+/* Styling app-na element */
 :host {
+    /* Scaling host element */
     flex: 1;
-
-    /* Container Takes All Available Space From Host Element */
     width: 100%;
     height: 100%;
 
+    /* Aligning elements inside host element */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* Styling NA Icon */
+/* Styling NA icon */
 img {
+    /* Aligning icon */
     margin-top: 12%;
 
+    /* Scaling icon */
     width: 65%;
     height: 30%;
     min-height: 160px;
@@ -27,6 +29,7 @@ img {
 @media (max-width: 1024px) {
     /* Styling NA icon */
     img {
+        /* Aligning icon */
         margin-top: 8%;
     }
 }
@@ -35,11 +38,12 @@ img {
 @media (max-width: 450px) {
     /* Styling NA Icon */
     img {
+        /* Aligning icon */
         margin-top: 22%;
 
+        /* Scaling icon */
         min-height: 30px;
         min-width: 30px;
-
         max-height: 75px;
         max-width: 175px;
     }

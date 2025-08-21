@@ -1,6 +1,8 @@
 import {Component, input, output} from '@angular/core';
-import {WeatherService} from "../../../../services/weather.service";
 
+/**
+ * This component is favorite button, used to save current city to favorite cities.
+ */
 @Component({
   selector: 'app-header-favorite-button',
   imports: [],
@@ -12,6 +14,7 @@ import {WeatherService} from "../../../../services/weather.service";
   }
 })
 export class HeaderFavoriteButtonComponent {
+  // region Component Signals
   /**
    * This input awaits boolean value, which controls visual of the button and tells user when favorite city is saved
    * to the list.
@@ -21,20 +24,27 @@ export class HeaderFavoriteButtonComponent {
    * <app-header-favorite-button [buttonActivated]="false" />
    */
   buttonActivated = input.required<boolean>();
+  // endregion
 
+
+  // region Component Outputs
   /**
-   * This event sends empty signal, which means city was added to the favorite cities list.
+   * This event sends empty signal, which is used by parent component to add current city to favorite cities.
    *
    * Usage example:
    * @example
    * <app-header-favorite-button (onClick)="favoriteButtonClicked()" />
    */
   onClick = output();
+  // endregion
 
+
+  // region Component Methods
   /**
-   * This method is responsible for emitting event to the parent component.
+   * This method emits signal without values to add current city to favorite cities in parent component.
    */
   buttonClicked() {
     this.onClick.emit();
   }
+  // endregion
 }

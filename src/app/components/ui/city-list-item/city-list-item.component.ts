@@ -1,6 +1,9 @@
 import {Component, input, output} from '@angular/core';
 import {CityData} from "../../../utilities/types/city-data.type";
 
+/**
+ * This component represents single favorite city entry in the cities tab.
+ */
 @Component({
   selector: 'app-city-list-item',
   imports: [],
@@ -8,8 +11,9 @@ import {CityData} from "../../../utilities/types/city-data.type";
   styleUrl: './city-list-item.component.css'
 })
 export class CityListItemComponent {
+  // region Component Signals
   /**
-   * This input awaits CityData object, which contains all the necessary information about the desired city.
+   * This input awaits object of CityData type, which contains all the required information about that city.
    *
    * Usage example:
    * @example
@@ -18,17 +22,20 @@ export class CityListItemComponent {
   cityData = input.required<CityData>();
 
   /**
-   * This input await boolean value, which will mark this list item as selected conditionally.
+   * This input awaits boolean value, which marks current list item as selected conditionally.
    *
    * Usage example:
    * @example
    * <app-city-list-item [currentListItemSelected]="true" />
    */
   currentListItemSelected = input.required<boolean>();
+  // endregion
 
+
+  // region Component Outputs
   /**
-   * This event occurs, when delete button is clicked, and it sends saved CityData object as a value, which will be used
-   * by parent component to delete it from the list.
+   * This event occurs after delete button is clicked. It sends object of CityData type, which is used by parent
+   * component to properly delete this list item.
    *
    * Usage example:
    * @example
@@ -37,27 +44,30 @@ export class CityListItemComponent {
   onDeleteClick = output<CityData>();
 
   /**
-   * This event occurs, when list item's text is clicked, which sends CityData object as a value, which will be used by
-   * parent component to display weather data of that city.
+   * This event occurs after list item's paragraph is clicked. It sends object of CityData type, which is used by
+   * parent component to display corresponding weather data.
    *
    * Usage example:
    * @example
    * <app-city-list-item (onListItemClick)="handlerMethod()" />
    */
   onListItemClick = output<CityData>();
+  // endregion
 
+
+  // region Component Methods
   /**
-   * This handler method sends CityData object as a value, which is necessary for deleting that city from favorite
-   * cities list.
+   * This handler method emits object of CityData type, which is used for deleting current city list item.
    */
   deleteButtonClicked() {
     this.onDeleteClick.emit(this.cityData());
   }
 
   /**
-   * This handler method sends CityData object as a value, which is necessary for displaying corresponding weather data.
+   * This handler method emits object of CityData type, which is used for displaying corresponding weather data.
    */
   listItemClicked() {
     this.onListItemClick.emit(this.cityData());
   }
+  // endregion
 }

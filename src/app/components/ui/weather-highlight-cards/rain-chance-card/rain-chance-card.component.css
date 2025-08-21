@@ -1,18 +1,19 @@
-/* This rule allows host element to dynamically get space in parent flex container */
+/* Styling app-rain-chance-card element */
 :host {
+    /* Scaling host element */
     flex: 1 0 186px;
     max-width: 186px;
 }
 
-/* Styling Card Container */
+/* Styling main container */
 .container {
+    /* Scaling container */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: 170px;
 
     background-color: var(--columbia-blue-main);
-
-    height: 170px;
 
     /* Setting border-box to avoid unnecessary container size growth */
     box-sizing: border-box;
@@ -20,17 +21,20 @@
     padding: 15px 10px 53px 10px;
 }
 
-/* Styling title text */
+/* Styling section title paragraph */
 p {
+    /* Setting font styles */
     font-family: 'Geist Mono', sans-serif;
     font-weight: 400;
     font-size: 17px;
     line-height: 163.2%;
+
     color: var(--outer-black-main);
 }
 
-/* Styling rain chance text */
+/* Styling rain chance span */
 span {
+    /* Setting font styles */
     font-family: 'Geist', sans-serif;
     font-weight: 400;
     font-size: 48px;
@@ -40,13 +44,13 @@ span {
 
 /* Tablet view */
 @media (max-width: 1024px) {
-    /* Styling host element */
+    /* Styling app-rain-chance-card element to scale */
     :host {
         flex: 1 0 162px;
         max-width: 162px;
     }
 
-    /* Styling container */
+    /* Styling main container to scale */
     .container {
         height: 150px;
         padding: 15px 10px 33px 10px;
@@ -55,12 +59,12 @@ span {
 
 /* Mobile view */
 @media (max-width: 450px) {
-    /* Styling host element */
+    /* Styling app-rain-chance-card element to scale */
     :host {
         max-width: 156px;
     }
 
-    /* Styling container */
+    /* Styling main container to scale */
     .container {
         padding: 15px 7px 33px;
     }

@@ -5,6 +5,9 @@ import {RainChanceCardComponent} from "../weather-highlight-cards/rain-chance-ca
 import {WindStatusCardComponent} from "../weather-highlight-cards/wind-status-card/wind-status-card.component";
 import {WeatherService} from "../../../services/weather.service";
 
+/**
+ * This component is a section container, which aligns and manages all weather highlight cards.
+ */
 @Component({
   selector: 'app-weather-highlight-section',
   imports: [
@@ -21,8 +24,8 @@ export class WeatherHighlightSectionComponent {
   }
 
   /**
-   * This computed signal is used to save currently searched city weather data to this component, which will be used
-   * inside the component's template.
+   * This computed signal saves WeatherData object of the currently searched city, which is used inside component's
+   * template.
    */
   sharedWeatherData = computed(() => this.weatherService.getSharedWeatherData());
 }

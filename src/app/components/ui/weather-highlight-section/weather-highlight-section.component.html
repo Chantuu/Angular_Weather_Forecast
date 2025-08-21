@@ -2,8 +2,10 @@
     <h2>Today's Highlights</h2>
 
     <!-- WeatherData object was assigned a variable in here to reduce sharedWeatherData() signal calls and
-        give necessary data to highlight card components easily -->
+     give necessary data to highlight card components as a variable while avoiding possible null error -->
     @let sharedWeatherDataValue = sharedWeatherData();
+
+    <!-- If WeatherData object is provided, display those components -->
     @if (sharedWeatherDataValue) {
         <div class="contentContainer">
             <app-uv-index-card [uvIndex]="sharedWeatherDataValue.daily[0].uvIndex" />

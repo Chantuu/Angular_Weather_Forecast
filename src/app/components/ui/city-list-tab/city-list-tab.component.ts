@@ -4,6 +4,9 @@ import {WeatherService} from "../../../services/weather.service";
 import {CityData} from "../../../utilities/types/city-data.type";
 import {FavoriteCitiesService} from "../../../services/favorite-cities.service";
 
+/**
+ * This component is used to manage and align CityListItem components.
+ */
 @Component({
   selector: 'app-city-list-tab',
   imports: [
@@ -17,22 +20,27 @@ export class CityListTabComponent {
               private readonly favoriteCitiesService: FavoriteCitiesService) {
   }
 
+  // region Component Signals
   /**
-   * This computed signal contains weather data of the currently searched city, used to mark correct favorite city list
-   * item as selected. It may be undefined.
+   * This computed signal saves object of WeatherData type, containing structured weather data and used
+   * to distribute this data.
+   *
+   * Note: This signal can be null, which means that no city was selected and null checking is necessary.
    */
   sharedWeatherData = computed(() => this.weatherService.getSharedWeatherData());
 
   /**
-   * This computed signal contains list containing saved favorite cities as CityData objects, which are displayed
-   * as list items in the template.
+   * This computed signal saves list, containing CityData type objects, which represent favorite cities.
    */
   favoriteCitiesList = computed(() => this.favoriteCitiesService.getFavoriteCitiesList());
+  // endregion
 
+
+  // region Component Methods
   /**
-   * This handler method is responsible for deleting desired city from the favorite cities list.
+   * This handler method deletes desired city from the favorite cities list.
    *
-   * @param currentCity - Desired city to be deleted
+   * @param currentCity - Desired CityObject to be deleted
    */
   deleteButtonClicked(currentCity: CityData) {
     this.favoriteCitiesService.removeCityFromFavoriteCitiesList(currentCity);
@@ -44,9 +52,10 @@ export class CityListTabComponent {
   }
 
   /**
-   * This async handler method is responsible for getting weather data, when list item was clicked.
+   * This asynchronous handler method displays full weather data for the desired city, when corresponding CityListItem
+   * component is clicked.
    *
-   * @param currentCity - Desired city to get weather data for
+   * @param currentCity - Desired CityObject to get weather data for
    */
   async listItemClicked(currentCity: CityData) {
     await this.weatherService.getWeatherDataFromList(currentCity);
@@ -59,4 +68,5 @@ export class CityListTabComponent {
       this.favoriteCitiesService.setFavoriteButtonState(true);
     }
   }
+  // endregion
 }

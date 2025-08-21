@@ -1,7 +1,9 @@
-/* Styling host elements to properly align items */
+/* Styling app-city-list-tab to properly align items */
 :host {
+    /* Aligning element */
     margin-top: 12%;
 
+    /* Aligning elements inside host element */
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -17,19 +19,24 @@
 
 /* Tablet view */
 @media (max-width: 1024px) {
-    /* Styling host element */
+    /* Styling app-city-list-tab */
     :host {
+        /* Aligning element */
         margin-top: 20px;
+
+        /* Aligning elements inside host element */
         gap: 15px;
     }
 }
 
 /* Mobile view */
 @media (max-width: 450px) {
-    /* Styling host elements to properly align items */
+    /* Styling app-city-list-tab */
     :host {
+        /* Aligning element */
         margin-top: 12%;
 
+        /* Aligning elements inside host element */
         gap: 12px;
     }
 }

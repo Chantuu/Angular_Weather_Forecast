@@ -3,8 +3,8 @@ import {TemperatureFormatService} from "../services/temperature-format.service";
 import {HeaderToggleButtonType} from "../utilities/enums/header-toggle-button-type.enum";
 
 /**
- * This pipe is used to display temperature in Celsius or in Fahrenheit. TemperatureFormatService is used to display
- * temperature conditionally in either of these formats.
+ * This pipe displays temperature in Celsius or Fahrenheit based on certain conditions. TemperatureFormatService is
+ * used for full functionality implementation.
  */
 @Pipe({
   name: 'temperatureFormat',

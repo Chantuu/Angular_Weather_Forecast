@@ -4,9 +4,11 @@
 </div>
 
 <!-- WeatherData object was assigned a variable in here to reduce sharedWeatherData() signal calls and
-        give necessary data to WeatherTabComponent easily -->
+     give necessary data to WeatherCard components as a variable while avoiding possible null error -->
 @let sharedWeatherDataValue = sharedWeatherData();
 
+<!-- If weather data for searched city was successfully retrieved, display full weather data cards.
+ Otherwise, don't display those components. -->
 @if (sharedWeatherDataValue) {
     <div class="contentScrollableContainer">
         @if (weatherInfoType() === WeatherInfoType.Hourly) {

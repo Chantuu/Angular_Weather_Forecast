@@ -3,9 +3,11 @@ import {WeatherCardSectionComponent} from "../../ui/weather-card-section/weather
 import {WeatherInfoType} from "../../../utilities/enums/weather-info-type.enum";
 import {WeatherHighlightSectionComponent} from "../../ui/weather-highlight-section/weather-highlight-section.component";
 import {WeatherService} from "../../../services/weather.service";
-import {WeatherData} from "../../../utilities/types/weather-data.type";
 import {HeaderButtonContainerComponent} from "../header-button-container/header-button-container.component";
 
+/**
+ * This component is a container used to align main weather data UI properly.
+ */
 @Component({
   selector: 'app-main-container',
   imports: [
@@ -19,15 +21,15 @@ import {HeaderButtonContainerComponent} from "../header-button-container/header-
 export class MainContainerComponent {
   constructor(private readonly weatherService: WeatherService) {}
 
+  // region Component Signals and Declared Types
   /**
-   * This computed signal is used to save currently searched city weather data to this component, which will be used
-   * inside the component's template.
+   * This computed signal saves currently searched city's weather data object.
    */
   sharedWeatherData = computed(() => this.weatherService.getSharedWeatherData());
 
   /**
-   * This enum property was declared to be used inside component template to properly display time
-   * based on WeatherInfoType enum.
+   * This property saves WeatherInfoType Enum, which is used inside the component's template.
    */
   protected readonly WeatherInfoType = WeatherInfoType;
+  // endregion
 }

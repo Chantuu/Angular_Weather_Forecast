@@ -1,28 +1,31 @@
-/* Giving Text Color */
+/* Giving text color in the component */
 h1, p {
     color: var(--columbia-blue-main);
 }
 
-/* Styling Header */
+/* Styling component's header */
 h1 {
+    /* Setting font styles */
     font-family: "Geist", sans-serif;
     font-size: 55px;
     font-weight: 600;
 
+    /* Aligning header */
     margin-bottom: 25px;
 }
 
-/* Styling Main Text*/
+/* Styling component's paragraph's font */
 p {
     font-size: 17px;
     font-weight: 400;
     line-height: 163.2%;
 }
 
-/* Tablet View */
+/* Tablet view */
 @media (max-width: 1024px) {
-    /* Styling Header */
+    /* Styling component container */
     h1 {
+        /* Aligning header */
         margin-top: 21px;
         margin-bottom: 24px;
     }
@@ -30,16 +33,18 @@ p {
 
 /* Mobile view */
 @media (max-width: 450px) {
-    /* Styling Header */
+    /* Styling component container */
     h1 {
+        /* Aligning header */
         margin-top: unset;
         margin-bottom: 5px;
 
+        /* Setting font styles */
         font-size: 38px;
         line-height: 49px;
     }
 
-    /* Styling Main Text*/
+    /* Styling component's paragraph's font */
     p {
         font-size: 14px;
     }

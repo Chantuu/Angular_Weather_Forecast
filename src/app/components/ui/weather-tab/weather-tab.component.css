@@ -1,14 +1,15 @@
-/* Host Element Takes All Available Space in Parent Flex Container */
+/* Styling app-weather-tab element to scale */
 :host {
     flex: 1;
 }
 
-/* Styling Container */
+/* Styling main container */
 .container {
-    /* Container Takes All Available Space From Host Element */
+    /* Scaling container */
     width: 100%;
     height: 100%;
 
+    /* Aligning elements inside container */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,20 +17,25 @@
 
 /* Styling container of the weather information */
 .weatherInformationContainer {
+    /* Scaling container */
     width: 100%;
 
+    /* Aligning elements inside container */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* Styling Weather Icon */
+/* Styling weather icon */
 .weatherIcon {
+    /* Alinging weather icon */
     margin-top: 6%;
 
+    /* Scaling weather icon */
     height: 242px;
     width: 242px;
 
+    /* Styling weather icon to make svg icon manipulable */
     mask-repeat: no-repeat;
     mask-position: center;
     mask-size: cover;
@@ -41,10 +47,12 @@
     -webkit-mask-size: cover;
 }
 
-/* Styling Temperature Text */
+/* Styling temperature text */
 .sidebarTemperature {
+    /* Aligning temperature text */
     margin-top: 1%;
 
+    /* Setting font styles */
     font-family: "Geist", sans-serif;
     font-size: 64px;
     font-weight: 800;
@@ -53,8 +61,9 @@
     align-self: flex-start;
 }
 
-/* Styling Date Text */
+/* Styling date text */
 .sidebarDate {
+    /* Setting font styles */
     font-family: "Geist", sans-serif;
     font-size: 32px;
     font-weight: 400;
@@ -63,33 +72,34 @@
     align-self: flex-start;
 }
 
-/* Styling Horizontal Ruler */
+/* Styling hr */
 hr {
+    /* Aligning hr */
     align-self: stretch;
-    border: 1.5px solid var(--columbia-blue-main);
-
     margin: 7% 0;
+
+    border: 1.5px solid var(--columbia-blue-main);
 }
 
-/* Class Giving Any Element Bottom Margin */
+/* Class giving any element bottom margin */
 .marginBottom {
     margin-bottom: 17px;
 }
 
 /* Tablet view */
 @media (max-width: 1024px) {
-    /* Styling main container */
+    /* Styling main container to align elements inside container */
     .container {
         flex-direction: row;
         justify-content: space-between;
     }
 
-    /* Styling weather icon */
+    /* Styling weather icon to align */
     .weatherIcon {
         margin-top: unset;
     }
 
-    /* Styling container containing weather information */
+    /* Styling container containing weather information to scale */
     .weatherInformationContainer {
         width: 440px;
     }
@@ -97,39 +107,41 @@ hr {
 
 /* Mobile view */
 @media (max-width: 450px) {
-    /* Styling container of the weather information */
+    /* Styling container of the weather information to scale */
     .weatherInformationContainer {
         width: 100%;
     }
 
-    /* Styling temperature text */
+    /* Styling temperature text to set font styles */
     .sidebarTemperature {
         font-size: 40px;
         font-weight: 600;
         line-height: 52px;
     }
 
-    /* Styling date text */
+    /* Styling date text to set font styles */
     .sidebarDate {
         font-size: 25px;
         font-weight: 300;
         line-height: 33px;
     }
 
-    /* Styling Weather Icon */
+    /* Styling weather icon */
     .weatherIcon {
+        /* Aligning weather icon */
         padding-top: 4%;
 
+        /* Scaling weather icon */
         width: 36%;
         height: 118px;
     }
 
-    /* Styling main container */
+    /* Styling main container to align elements inside container */
     .container {
         flex-direction: column;
     }
 
-    /* Styling Horizontal Ruler */
+    /* Styling hr to align it */
     hr {
         margin: 4% 0;
     }

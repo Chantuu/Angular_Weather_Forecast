@@ -1,5 +1,5 @@
 /**
- * This enum is used to specify to the components, in which timeline should weather data be displayed.
+ * This enum specifies to the components, in which format will weather data be displayed.
  */
 export enum WeatherInfoType {
     Hourly = 'Hourly',

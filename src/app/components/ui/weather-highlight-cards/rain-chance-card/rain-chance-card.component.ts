@@ -1,5 +1,8 @@
 import {Component, input} from '@angular/core';
 
+/**
+ * This is Rain Chance Highlight card component, which displays probability of the rain precipitation.
+ */
 @Component({
   selector: 'app-rain-chance-card',
   imports: [],
@@ -8,7 +11,7 @@ import {Component, input} from '@angular/core';
 })
 export class RainChanceCardComponent {
   /**
-   * This required input awaits a rain chance value of number type to be displayed inside the component.
+   * This required input awaits number value, which tells probability of the precipitation.
    *
    * Usage example:
    * @example

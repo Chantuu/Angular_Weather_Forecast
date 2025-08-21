@@ -1,10 +1,11 @@
-/* Styling host element */
+/* Styling app-sidebar-container element */
 :host {
     flex: 1 1 473px;
 
     /* This rule prevents container from unnecessary expansion */
     box-sizing: border-box;
 
+    /* Styling element visuals */
     background-color: var(--outer-black-main);
     padding: 35px 60px 72px 60px;
 
@@ -12,48 +13,55 @@
     max-height: 100vh;
 }
 
-/* Making Both Containers Flex Containers */
+/* Making both containers flex containers */
 .container, .buttonContainer {
     display: flex;
 }
 
-/* Styling Component Container */
+/* Styling component container */
 .container {
+    /* Aligning items inside container */
     flex-direction: column;
     justify-content: space-between;
 
+    /* Sizing container */
     width: 100%;
     height: 100%;
 }
 
-/* Styling Sidebar Button Container */
+/* Styling sidebar button container */
 .buttonContainer {
+    /* Aligning buttons inside container */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 
+    /* Aligning container */
     margin-top: 100px;
 }
 
-/* Tablet View */
+/* Tablet view */
 @media (max-width: 1024px) {
-    /* Styling host element */
+    /* Styling app-sidebar-container element */
     :host {
-        max-height: 380px;
+        /* Styling element visuals */
         padding: 20px 24px 37px 24px;
+        max-height: 380px;
     }
 
-    /* Styling Sidebar Button Container */
+    /* Styling component container */
     .buttonContainer {
-        /* Positioning sidebar button container as bottom button container fixed to the viewport*/
+        /* Positioning sidebar button container as bottom button container fixed to the viewport */
         position: fixed;
         bottom: -1px;
         left: 0;
         z-index: 1;
 
+        /* Making sidebar button container to scale properly */
         margin-top: 0;
         box-sizing: border-box;
 
+        /* Styling container visuals */
         width: 100vw;
         padding: 15px 180px 21px 180px;
         background-color: var(--outer-black-main);
@@ -62,13 +70,14 @@
 
 /* Mobile view */
 @media (max-width: 450px) {
-    /* Styling host element */
+    /* Styling app-sidebar-container element */
     :host {
+        /* Styling element visuals */
         padding: 10px 16px 31px;
         flex: 1 1 290px;
     }
 
-    /* Styling Sidebar Button Container */
+    /* Styling component container */
     .buttonContainer {
         padding: 15px 16px 21px;
     }

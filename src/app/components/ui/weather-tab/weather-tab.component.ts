@@ -6,6 +6,9 @@ import {
 import {NgStyle} from "@angular/common";
 import {TemperatureFormatPipe} from "../../../pipes/temperature-format.pipe";
 
+/**
+ * This is weather tab component, which is used to display main weather data.
+ */
 @Component({
   selector: 'app-weather-tab',
     imports: [SidebarWeatherInfoComponent, NgStyle, TemperatureFormatPipe],
@@ -13,15 +16,15 @@ import {TemperatureFormatPipe} from "../../../pipes/temperature-format.pipe";
   styleUrl: './weather-tab.component.css'
 })
 export class WeatherTabComponent {
+  // region Component Inputs and Declared Types
   /**
-   * This property is used to save getWeatherIconPath function, which enables it to be used in the component template.
+   * This property saves getWeatherIconPath function, which is used inside component's template.
    */
   protected readonly getWeatherIconPath = getWeatherIconPath;
 
 
   /**
-   * This required input receives current daily weather temperature value of number type to be
-   * displayed inside the component.
+   * This required input awaits number value, which represents current temperature of the weather.
    *
    * Usage example:
    * @example
@@ -30,7 +33,7 @@ export class WeatherTabComponent {
   weatherTemperature = input.required<number>();
 
   /**
-   * This required input receives current date value of Date type to display current weekday inside the component.
+   * This required input awaits Date object value, which represents current weekday.
    *
    * Usage example:
    * @example
@@ -39,7 +42,7 @@ export class WeatherTabComponent {
   currentDate = input.required<Date>();
 
   /**
-   * This required input receives current city name of string type to display it inside the component.
+   * This required input awaits string value, which represents currently searched city name.
    *
    * Usage example:
    * @example
@@ -48,8 +51,7 @@ export class WeatherTabComponent {
   currentCityName = input.required<string>();
 
   /**
-   * This required input receives current weather code value of number type to display
-   * corresponding weather icon based on the provided value.
+   * This required input awaits number value, which represents current weather code and corresponding icon is displayed.
    *
    * Usage example:
    * @example
@@ -57,12 +59,13 @@ export class WeatherTabComponent {
    */
   weatherCode = input.required<number>();
 
-  /** This required input receives weather precipitation probability value of number type
-   * to display it inside the component.
+  /**
+   * This required input awaits number value, which represents precipitation probability.
    *
    * Usage example:
    * @example
    * <app-weather-tab [weatherPrecipitationProbability]="22" />
    */
   weatherPrecipitationProbability = input.required<number>();
+  // endregion
 }

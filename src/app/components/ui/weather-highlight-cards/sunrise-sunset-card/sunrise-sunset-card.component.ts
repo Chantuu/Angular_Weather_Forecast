@@ -8,7 +8,7 @@ import {Component, input} from '@angular/core';
 })
 export class SunriseSunsetCardComponent {
   /**
-   * This required input awaits sunrise time value as a Date type, which will be displayed inside the component
+   * This required input awaits Date object, which represents sunrise time.
    *
    * Usage example:
    * @example
@@ -17,7 +17,7 @@ export class SunriseSunsetCardComponent {
   sunriseTime = input.required<Date>();
 
   /**
-   * This required input awaits sunset time value as a Date type, which will be displayed inside the component
+   * This required input awaits Date object, which represents sunset time.
    *
    * Usage example:
    * @example

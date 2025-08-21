@@ -1,4 +1,4 @@
-/* This rule allows host element to dynamically get space in parent flex container */
+/* Styling app-wind-status-card element to scale */
 :host {
     flex: 1 0 186px;
     max-width: 186px;
@@ -6,12 +6,14 @@
 
 /* Styling card container */
 .container {
+    /* Aligning elements inside container */
     display: flex;
     flex-direction: column;
     gap: 16px;
 
     background-color: var(--columbia-blue-main);
 
+    /* Scaling container */
     height: 170px;
 
     /* Setting border-box to avoid unnecessary container size growth */
@@ -20,7 +22,7 @@
     padding: 15px 10px 10px;
 }
 
-/* Styling container, which contains spans displaying weather status */
+/* Styling container, which contains spans displaying weather status to align content properly */
 .contentContainer {
     display: flex;
     flex-direction: row;
@@ -30,10 +32,12 @@
 
 /* Styling title text */
 p {
+    /* Setting font styles */
     font-family: 'Geist Mono', sans-serif;
     font-weight: 400;
     font-size: 17px;
     line-height: 163.2%;
+
     color: var(--outer-black-main);
 }
 
@@ -42,14 +46,14 @@ p {
     font-family: 'Geist', sans-serif;
 }
 
-/* Styling span which displays wind speed */
+/* Styling wind speed span to set font styles */
 .windSpeed {
     font-weight: 300;
     font-size: 44px;
     line-height: 47px;
 }
 
-/* Styling span which displays wind speed unit */
+/* Styling wind speed unit span to set font styles */
 .speedUnit {
     font-weight: 300;
     font-size: 18px;
@@ -58,13 +62,13 @@ p {
 
 /* Tablet view */
 @media (max-width: 1024px) {
-    /* Styling host element */
+    /* Styling app-wind-status-card element to scale */
     :host {
         flex: 1 0 162px;
         max-width: 162px;
     }
 
-    /* Styling container */
+    /* Styling card container to scale */
     .container {
         height: 150px;
         padding: 15px 10px 33px 10px;
@@ -73,12 +77,12 @@ p {
 
 /* Mobile view */
 @media (max-width: 450px) {
-    /* Styling host element */
+    /* Styling app-wind-status-card element to scale */
     :host {
         max-width: 156px;
     }
 
-    /* Styling container */
+    /* Styling card container to scale */
     .container {
         padding: 15px 7px 40px;
     }

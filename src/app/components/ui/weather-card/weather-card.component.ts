@@ -6,6 +6,9 @@ import {
 import { WeatherInfoType } from "../../../utilities/enums/weather-info-type.enum";
 import {TemperatureFormatPipe} from "../../../pipes/temperature-format.pipe";
 
+/**
+ * This is weather card component, which is configurable to display desired weather information.
+ */
 @Component({
   selector: 'app-weather-card',
   imports: [
@@ -16,19 +19,19 @@ import {TemperatureFormatPipe} from "../../../pipes/temperature-format.pipe";
   styleUrl: './weather-card.component.css'
 })
 export class WeatherCardComponent {
+  // region Component Inputs and Declared Types
   /**
-   * This enum property was declared to be used inside component template to properly display time
-   * based on WeatherInfoType enum.
+   * This property saves WeatherInfoType Enum, which is used inside component's template.
    */
   protected readonly WeatherInfoType = WeatherInfoType;
 
   /**
-   * This property is used to save getWeatherIconPath function, which enables it to be used in the component template.
+   * This property saves getWeatherIconPath function, which is used inside component's template.
    */
   protected readonly getWeatherIconPath = getWeatherIconPath;
 
   /**
-   * This required input receives current weather temperature value of number type to be
+   * This required input awaits current weather temperature value of number type to be
    * displayed inside the component.
    *
    * Usage example:
@@ -38,7 +41,7 @@ export class WeatherCardComponent {
   weatherTemperature = input.required<number>();
 
   /**
-   * This required input receives current weather code value of number type to display
+   * This required input awaits current weather code value of number type to display
    * corresponding weather icon.
    *
    * Usage example:
@@ -48,7 +51,7 @@ export class WeatherCardComponent {
   weatherCode = input.required<number>();
 
   /**
-   * This required input receives current date value of string type to display current hour or weekday
+   * This required input awaits current date value of string type to display current hour or weekday
    * inside the component.
    *
    * Usage example:
@@ -58,12 +61,12 @@ export class WeatherCardComponent {
   weatherDateTime = input.required<Date>();
 
   /**
-   * This required input awaits WeatherInfoType enum, which will tell this component to display weather time
-   * in hour or weekday format.
+   * This required input awaits WeatherInfoType Enum, determining to display weather time in hourly or weekday format.
    *
    * Usage example:
    * @example
    * <app-weather-card [weatherInfoType]="WeatherInfoType.Hourly" />
    */
   weatherInfoType = input.required<WeatherInfoType>();
+  // endregion
 }

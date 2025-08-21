@@ -1,5 +1,8 @@
 import {Component, input} from '@angular/core';
 
+/**
+ * This is UV index card component, which displays UV index data.
+ */
 @Component({
   selector: 'app-uv-index-card',
   imports: [],
@@ -8,7 +11,7 @@ import {Component, input} from '@angular/core';
 })
 export class UvIndexCardComponent {
   /**
-   * This required input awaits uv index value as a number, which will be displayed in the component.
+   * This required input awaits number value, which represents current UV index.
    *
    * Usage example:
    * @example
