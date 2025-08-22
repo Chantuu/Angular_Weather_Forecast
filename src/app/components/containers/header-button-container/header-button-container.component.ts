@@ -41,7 +41,7 @@ export class HeaderButtonContainerComponent {
    * used to display temperature.
    */
   currentActiveButton =
-      signal<HeaderToggleButtonType>(HeaderToggleButtonType.celsius);
+      computed(() => this.temperatureFormatService.getTemperatureFormat());
 
   /**
    * This computed signal saves favorite button's state, which is used to make it conditionally active.
@@ -59,7 +59,6 @@ export class HeaderButtonContainerComponent {
    * @param buttonType - Recently clicked temperature button
    */
   toggleButtonClicked(buttonType: HeaderToggleButtonType) {
-    this.currentActiveButton.set(buttonType);
     this.temperatureFormatService.setTemperatureFormat(buttonType);
   }
 
