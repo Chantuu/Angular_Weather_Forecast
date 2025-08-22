@@ -46,9 +46,8 @@ h1 {
 @media (max-width: 1024px) {
     /* Resizing app-main-container element */
     :host {
-        /* Sizing and aligning element */
+        /* Scaling element */
         flex: 2 1 auto;
-        margin-bottom: 25%;
         padding: 20px 24px 20px;
 
         /* Removing overflow properties */
@@ -66,8 +65,7 @@ h1 {
 @media (max-width: 450px) {
     /* Resizing app-main-container element */
     :host {
-        /* Sizing and aligning element */
-        margin-bottom: 50%;
+        /* Scaling element */
         padding: 20px 16px;
 
         /* Controlling gap between weather card sections */

@@ -27,10 +27,10 @@ h2 {
     white-space: nowrap;
 }
 
-/* Mobile view */
-@media (max-width: 450px) {
-    /* Styling contentContainer to align elements */
+/* Tablet view */
+@media (max-width: 1024px) {
+    /* Styling contentContainer to align */
     .contentContainer {
-        gap: 30px;
+        margin-bottom: 100px;
     }
 }
