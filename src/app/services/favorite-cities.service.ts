@@ -1,5 +1,6 @@
-import {Injectable, signal} from '@angular/core';
+import {effect, Injectable, signal} from '@angular/core';
 import {CityData} from "../utilities/types/city-data.type";
+import {getValueFromLocalStorage, saveValueToLocalStorage} from "../utilities/functions/storage-manager.function";
 
 /**
  * This service is responsible for managing favorite cities functionality.
@@ -8,7 +9,19 @@ import {CityData} from "../utilities/types/city-data.type";
   providedIn: 'root'
 })
 export class FavoriteCitiesService {
-  // region Service Signals
+  constructor() {
+    effect(() => {
+      // Automatically update value every time corresponding signal changes
+      saveValueToLocalStorage(this._localStorageKey, this._favoriteCitiesList())
+    })
+  }
+
+  // region Service Signals and Declared Properties
+  /**
+   * This private field saves localstorage key, used to save favorite cities objects in browser's local storage.
+   */
+  private _localStorageKey = 'favorite-cities';
+
   /**
    * This private signal manages HeaderFavoriteButton component state.
    */
@@ -17,7 +30,8 @@ export class FavoriteCitiesService {
   /**
    * This private signal saves favorite cities list.
    */
-  private _favoriteCitiesList = signal<CityData[]>([]);
+  private _favoriteCitiesList = signal<CityData[]>
+  (getValueFromLocalStorage<CityData[]>(this._localStorageKey) || []);
   // endregion
 
   // region Service Methods
@@ -88,7 +102,7 @@ export class FavoriteCitiesService {
    */
   addCityToFavoriteCitiesList(cityData: CityData) {
     if (!this.cityExistsInFavoriteCitiesList(cityData)) {
-      this._favoriteCitiesList().push(cityData);
+      this._favoriteCitiesList.update((currentList) => [...currentList, cityData]);
     }
     else {
       throw new Error(`Unable to add ${cityData.cityName} to favorite cities list, because it already exists.`);
