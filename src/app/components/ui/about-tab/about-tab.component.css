@@ -1,3 +1,8 @@
+/* Styling host element to to prevent unnecessary shrink */
+:host {
+    min-width: 341.68px;
+}
+
 /* Giving text color in the component */
 h1, p {
     color: var(--columbia-blue-main);
