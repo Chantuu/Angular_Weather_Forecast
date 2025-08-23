@@ -130,7 +130,7 @@ Special thanks to the open-source community for providing the tools that made th
 
 ## 📄 License
 
-This project is licensed under the **MIT License** - See the [LICENSE](https://github.com/Chantuu/Weather_Forecast/blob/main/LICENSE) file for details.
+This project is licensed under the **MIT License** - See the [LICENSE](https://github.com/Chantuu/Angular_Weather_Forecast?tab=MIT-1-ov-file) file for details.
 
 ## 👨‍💻 Author
 
