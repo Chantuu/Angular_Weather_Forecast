@@ -14,6 +14,9 @@
     justify-content: center;
     align-items: center;
 
+    /* Setting cursor */
+    cursor: pointer;
+
     background-color: var(--outer-black-main);
     transition: background-color 0.2s ease-in-out;
 }

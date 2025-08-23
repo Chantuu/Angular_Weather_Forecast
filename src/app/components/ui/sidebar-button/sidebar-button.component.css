@@ -3,6 +3,9 @@
     /* Removing default button styles */
     background: none;
     border: none;
+
+    /* Setting cursor */
+    cursor: pointer;
 }
 
 /* Aligning elements inside button container */

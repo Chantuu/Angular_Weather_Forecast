@@ -13,6 +13,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    /* Setting cursor */
+    cursor: pointer;
+    cursor: pointer;
 }
 
 /* Styling span inside button */

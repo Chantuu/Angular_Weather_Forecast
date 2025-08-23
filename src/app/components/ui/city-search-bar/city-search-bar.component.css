@@ -54,6 +54,9 @@ button {
     font-size: 17px;
     font-weight: 400;
 
+    /* Setting cursor */
+    cursor: pointer;
+
     background-color: var(--picton-blue-main);
     color: var(--outer-black-main);
     transition: background-color 0.2s ease-in-out;
