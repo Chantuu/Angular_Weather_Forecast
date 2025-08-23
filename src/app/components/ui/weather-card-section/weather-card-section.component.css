@@ -39,11 +39,6 @@ h2 {
     white-space: nowrap;
 }
 
-/* Hiding scroll bars */
-::-webkit-scrollbar {
-    display: none;
-}
-
 /* Tablet view */
 @media (max-width: 1024px) {
     /* Styling app-weather-card-section element to align elements */
