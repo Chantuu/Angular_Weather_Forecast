@@ -26,6 +26,25 @@ p {
     line-height: 163.2%;
 }
 
+/* Styling link */
+a {
+    /* Removing default link decoration */
+    text-decoration: none;
+
+    color: var(--picton-blue-main);
+    transition: color 0.2s ease-in-out;
+}
+
+/* When link is hovered */
+a:hover {
+    color: var(--picton-blue-hover);
+}
+
+/* When link is clicked */
+a:active {
+    color: var(--picton-blue-active);
+}
+
 /* Tablet view */
 @media (max-width: 1024px) {
     /* Styling component container */
