@@ -12,7 +12,6 @@
 - [🛠️ Tech Stack](#-tech-stack)
 - [🚀 Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
-  - [Environment Setup](#environment-setup)
   - [Installation](#installation)
   - [Development Server](#development-server)
 - [🧰 Development Tools](#-development-tools)
@@ -23,9 +22,11 @@
 
 ## Overview
 
-**Weather Forecast** is a responsive web application built using Angular and Open-Meteo API, allowing to get accurate weather forecasts for desired city.
+**Weather Forecast** is a responsive web application built using Angular and Open-Meteo free API, allowing to get accurate weather forecasts for desired city.
 
 This project was built to showcase skills in Angular project development, designing responsive websites and effectively integrating external API services.
+
+_Note: This project uses Open-Meteo's free tier. Check their documentation for **[more information.](https://open-meteo.com/en/docs)**_
 
 ## ✨ Features
 
@@ -48,15 +49,6 @@ This project was built to showcase skills in Angular project development, design
 
 - Node.js (v22.16.0 or later)
 - npm (v11.4.2 or later)
-
-### Environment Setup
-
-Create a `.env` file in the root directory with the following variable:
-
-```
-NG_APP_OPEN_METEO_API_KEY="&apikey={Your_API_Key}"
-```
-_Note: You must enter your Open-Meteo API key in place of the brackets._
 
 ### Installation
 

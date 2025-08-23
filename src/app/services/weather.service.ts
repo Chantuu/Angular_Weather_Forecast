@@ -95,7 +95,7 @@ export class WeatherService {
   private async getWeatherDataFromApi(cityData: CityData) {
     const response = await axios({
       method: 'GET',
-      url: `https://api.open-meteo.com/v1/forecast?latitude=${cityData.latitude}&longitude=${cityData.longitude}&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,wind_speed_10m_max,precipitation_probability_mean&hourly=weather_code,temperature_2m&timezone=auto${import.meta.env.NG_APP_OPEN_METEO_API_KEY || ''}`
+      url: `https://api.open-meteo.com/v1/forecast?latitude=${cityData.latitude}&longitude=${cityData.longitude}&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,wind_speed_10m_max,precipitation_probability_mean&hourly=weather_code,temperature_2m&timezone=auto`
     });
 
     // Initialization of the daily weather object array
